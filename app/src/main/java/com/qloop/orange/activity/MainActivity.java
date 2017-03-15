@@ -77,7 +77,7 @@ public class MainActivity extends Activity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Window win = getWindow();
-        win.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        win.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);//保持屏幕常亮
         win.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         win.requestFeature(Window.FEATURE_NO_TITLE);
@@ -85,7 +85,7 @@ public class MainActivity extends Activity
 
         initUIElements();
 
-        mCurrentCamera = Camera.CameraInfo.CAMERA_FACING_BACK;
+        mCurrentCamera = Camera.CameraInfo.CAMERA_FACING_BACK;  //后置摄像头
         isFlashOn = false;
         initUIEventHandler();
         initStateListener();
@@ -109,12 +109,12 @@ public class MainActivity extends Activity
         mUIEventHandler = new Handler() {
             public void handleMessage(Message msg) {
                 switch (msg.what) {
-                    case UI_EVENT_RECORDER_CONNECTING:
+                    case UI_EVENT_RECORDER_CONNECTING:  //正在连接
                         isConnecting = true;
                         mRecorderButton.setBackgroundResource(R.drawable.block);
                         mRecorderButton.setEnabled(false);
                         break;
-                    case UI_EVENT_RECORDER_STARTED:
+                    case UI_EVENT_RECORDER_STARTED:   //连接成功 正在录像(直播)
                         Log.i(TAG, "Starting Streaming succeeded!");
                         isSessionStarted = true;
                         needRestartAfterStopped = false;
@@ -122,7 +122,7 @@ public class MainActivity extends Activity
                         mRecorderButton.setBackgroundResource(R.drawable.to_stop);
                         mRecorderButton.setEnabled(true);
                         break;
-                    case UI_EVENT_RECORDER_STOPPED:
+                    case UI_EVENT_RECORDER_STOPPED:   //停止录像(直播)
                         Log.i(TAG, "Stopping Streaming succeeded!");
                         isSessionStarted = false;
                         needRestartAfterStopped = false;
@@ -136,10 +136,10 @@ public class MainActivity extends Activity
                         mRecorderButton.setVisibility(View.VISIBLE);
                         mRecorderButton.setEnabled(true);
                         break;
-                    case UI_EVENT_HIDE_FOCUS_ICON:
+                    case UI_EVENT_HIDE_FOCUS_ICON:  //隐藏聚焦图标
                         mFocusIcon.setVisibility(View.GONE);
                         break;
-                    case UI_EVENT_RECONNECT_SERVER:
+                    case UI_EVENT_RECONNECT_SERVER:  //重连...
                         Log.i(TAG, "Reconnecting to server...");
                         if (isSessionReady) {
                             mLiveSession.startRtmpSession(mStreamingUrl);
@@ -176,7 +176,7 @@ public class MainActivity extends Activity
                         Toast.makeText(MainActivity.this, hint, Toast.LENGTH_LONG).show();
                         fitPreviewToParentByResolution(mCameraView.getHolder(), mVideoWidth, mVideoHeight);
                         break;
-                    case TEST_EVENT_SHOW_UPLOAD_BANDWIDTH:
+                    case TEST_EVENT_SHOW_UPLOAD_BANDWIDTH:  //测试上传的带宽
                         Log.d(TAG, "Current upload bandwidth is "
                                 + mLiveSession.getCurrentUploadBandwidthKbps() + " KBps.");
                         mUIEventHandler.sendEmptyMessageDelayed(TEST_EVENT_SHOW_UPLOAD_BANDWIDTH, 2000);
@@ -191,6 +191,11 @@ public class MainActivity extends Activity
 
     private void initStateListener() {
         mStateListener = new SessionStateListener() {
+
+            /**
+             * 录制设备准备完毕
+             * @param code 固定为RESULT_CODE_OF_OPERATION_SUCCEEDED
+             */
             @Override
             public void onSessionPrepared(int code) {
                 if (code == SessionStateListener.RESULT_CODE_OF_OPERATION_SUCCEEDED) {
@@ -207,6 +212,10 @@ public class MainActivity extends Activity
                 }
             }
 
+            /**
+             * 推流开始后的回调
+             * @param code 固定为RESULT_CODE_OF_OPERATION_SUCCEEDED
+             */
             @Override
             public void onSessionStarted(int code) {
                 if (code == SessionStateListener.RESULT_CODE_OF_OPERATION_SUCCEEDED) {
@@ -219,6 +228,10 @@ public class MainActivity extends Activity
                 }
             }
 
+            /**
+             * 推流结束后的回调
+             * @param code 固定为RESULT_CODE_OF_OPERATION_SUCCEEDED
+             */
             @Override
             public void onSessionStopped(int code) {
                 if (code == SessionStateListener.RESULT_CODE_OF_OPERATION_SUCCEEDED) {
@@ -235,6 +248,19 @@ public class MainActivity extends Activity
                 }
             }
 
+            /**
+             * 推流 SDK 出错后的回调
+             * @param code 错误类型如下：
+             *                ERROR_CODE_OF_OPEN_MIC_FAILED
+             *                ERROR_CODE_OF_OPEN_CAMERA_FAILED
+             *                ERROR_CODE_OF_PREPARE_SESSION_FAILED
+             *                ERROR_CODE_OF_CONNECT_TO_SERVER_FAILED
+             *                ERROR_CODE_OF_DISCONNECT_FROM_SERVER_FAILED
+             *                ERROR_CODE_OF_UNKNOWN_STREAMING_ERROR
+             *                ERROR_CODE_OF_WEAK_CONNECTION_ERROR
+             *                ERROR_CODE_OF_SERVER_INTERNAL_ERROR
+             *                ERROR_CODE_OF_LOCAL_NETWORK_ERROR
+             */
             @Override
             public void onSessionError(int code) {
                 switch (code) {
@@ -336,13 +362,13 @@ public class MainActivity extends Activity
 
     private void initRTMPSession(SurfaceHolder sh) {
         Log.d(TAG, "Calling initRTMPSession...");
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2)  //当前系统版本 > 4.3 使用硬编码 小于使用软编码
             mLiveSession = new LiveSessionHW(this, mVideoWidth, mVideoHeight, mFrameRate, mBitrate, mCurrentCamera);
         else
             mLiveSession = new LiveSessionSW(this, mVideoWidth, mVideoHeight, mFrameRate, mBitrate, mCurrentCamera);
         mLiveSession.setStateListener(mStateListener);
-        mLiveSession.bindPreviewDisplay(sh);
-        mLiveSession.prepareSessionAsync();
+        mLiveSession.bindPreviewDisplay(sh);//绑定 预览View
+        mLiveSession.prepareSessionAsync();//启动音视频采集设备（即相机和 MIC）
     }
 
     public void onClickQuit(View v) {
@@ -353,6 +379,9 @@ public class MainActivity extends Activity
         }
     }
 
+    /**
+     * 闪光灯开关
+     */
     public void onClickSwitchFlash(View v) {
         mCameraStateButton.setEnabled(false);
         if (mCurrentCamera == Camera.CameraInfo.CAMERA_FACING_BACK) {
@@ -369,6 +398,9 @@ public class MainActivity extends Activity
         mCameraStateButton.setEnabled(true);
     }
 
+    /**
+     * 切换摄像头
+     */
     public void onClickSwitchCamera(View v) {
         mCameraStateButton.setEnabled(false);
         if (mLiveSession.canSwitchCamera()) {
@@ -504,6 +536,12 @@ public class MainActivity extends Activity
         return true;
     }
 
+    /**
+     * 调整宽高
+     * @param holder
+     * @param width
+     * @param height
+     */
     private void fitPreviewToParentByResolution(SurfaceHolder holder, int width, int height) {
         // Adjust the size of SurfaceView dynamically
         int screenHeight = getWindow().getDecorView().getRootView().getHeight();
