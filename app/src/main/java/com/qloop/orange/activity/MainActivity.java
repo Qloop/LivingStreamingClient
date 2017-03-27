@@ -1,6 +1,7 @@
 package com.qloop.orange.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.hardware.Camera;
 import android.os.Build;
@@ -71,7 +72,7 @@ public class MainActivity extends Activity
     private int mVideoHeight = 720;
     private int mFrameRate = 15;
     private int mBitrate = 2048000;
-    private String mStreamingUrl = "rtmp://push.bj.bcelive.com/live/xxxxxxxxxxxxxxxx"; // TODO:: Replace it with your streaming url.
+    private String mStreamingUrl = ""; // TODO:: Replace it with your streaming url.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +84,8 @@ public class MainActivity extends Activity
         win.requestFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
+        Intent intent = getIntent();
+        mStreamingUrl = intent.getStringExtra("rtmp");
         initUIElements();
 
         mCurrentCamera = Camera.CameraInfo.CAMERA_FACING_BACK;  //后置摄像头
