@@ -1,4 +1,4 @@
-package com.qloop.orange.activity;
+package com.qloop.orange.view;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -76,7 +76,7 @@ public class CreateRoomActivity extends Activity {
                     @Override
                     public void onNext(ApplyPushInfo applyPushInfo) {
                         ToastUtils.showToastLong(CreateRoomActivity.this, applyPushInfo.getRtmp());
-                        Intent intent = new Intent(CreateRoomActivity.this, MainActivity.class);
+                        Intent intent = new Intent(CreateRoomActivity.this, PushActivity.class);
                         intent.putExtra("rtmp", applyPushInfo.getRtmp());
                         startActivity(intent);
                     }

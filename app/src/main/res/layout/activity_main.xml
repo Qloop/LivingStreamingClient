@@ -1,64 +1,28 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".activity.MainActivity" >
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:gravity="center"
+              android:orientation="vertical">
 
-    <SurfaceView
-        android:id="@+id/camera"
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true" />
-    
-    <ImageView 
-        android:id="@+id/iv_focus"
-        android:background="@drawable/ico_focus"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:visibility="gone" />
-    
-    <Button
-        android:id="@+id/connect"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/to_start"
-        android:onClick="onClickStreamingButton"
-        android:visibility="invisible" />
-    
-    <Button
-        android:id="@+id/flash_ctl"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="30dp"
-        android:layout_marginBottom="30dp"
-        android:background="@drawable/flash_off"
-        android:onClick="onClickSwitchFlash" />
-    
-    <Button
-        android:id="@+id/camera_ctl"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="30dp"
-        android:layout_marginRight="30dp"
-        android:background="@drawable/switch_camera"
-        android:onClick="onClickSwitchCamera" />
-    
-    <ProgressBar
-        android:id="@+id/progressBar"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="16dp"
-        android:visibility="visible" />
+        android:layout_gravity="center_vertical|center_horizontal"
+        android:padding="10dp"
+        android:text="DEMO"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
 
-</RelativeLayout>
+    <Button
+        android:id="@+id/btn_push"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="做主播"/>
+
+    <Button
+        android:id="@+id/btn_pull"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="看直播"/>
+</LinearLayout>

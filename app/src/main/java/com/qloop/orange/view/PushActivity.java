@@ -1,4 +1,4 @@
-package com.qloop.orange.activity;
+package com.qloop.orange.view;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -33,7 +33,7 @@ import com.qloop.orange.R;
  * Created by Qloop on 2017/3/15.
  */
 
-public class MainActivity extends Activity
+public class PushActivity extends Activity
         implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener {
     private static final String TAG = "StreamingActivity";
     private LiveSession mLiveSession = null;
@@ -82,7 +82,7 @@ public class MainActivity extends Activity
         win.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         win.requestFeature(Window.FEATURE_NO_TITLE);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_push);
 
         Intent intent = getIntent();
         mStreamingUrl = intent.getStringExtra("rtmp");
@@ -171,12 +171,12 @@ public class MainActivity extends Activity
                         break;
                     case UI_EVENT_SHOW_TOAST_MESSAGE:
                         String text = (String) msg.obj;
-                        Toast.makeText(MainActivity.this, text, Toast.LENGTH_LONG).show();
+                        Toast.makeText(PushActivity.this, text, Toast.LENGTH_LONG).show();
                         break;
                     case UI_EVENT_RESIZE_CAMERA_PREVIEW:
                         String hint = String.format("注意：当前摄像头不支持您所选择的分辨率\n实际分辨率为%dx%d",
                                 mVideoWidth, mVideoHeight);
-                        Toast.makeText(MainActivity.this, hint, Toast.LENGTH_LONG).show();
+                        Toast.makeText(PushActivity.this, hint, Toast.LENGTH_LONG).show();
                         fitPreviewToParentByResolution(mCameraView.getHolder(), mVideoWidth, mVideoHeight);
                         break;
                     case TEST_EVENT_SHOW_UPLOAD_BANDWIDTH:  //测试上传的带宽
