@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LivingStreamingClient</string>
+    <string name="app_name">猿猴直播</string>
     <string name="room_name">直播间名字</string>
     <string name="hint_room_name">请输入直播间名字</string>
     <string name="create_room">创建直播间</string>
