@@ -1,10 +1,10 @@
 package com.qloop.orange.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 
 import com.qloop.orange.R;
 import com.qloop.orange.presenter.CheckUpdatePresenter;
@@ -17,7 +17,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
  * Created by Qloop on 2017/4/9.
  */
 
-public class SplashActivity extends AppCompatActivity implements ISplashView {
+public class SplashActivity extends Activity implements ISplashView {
 
 
     private SweetAlertDialog pDialog;
@@ -29,6 +29,7 @@ public class SplashActivity extends AppCompatActivity implements ISplashView {
         setContentView(R.layout.activity_splash);
         ButterKnife.bind(this);
         checkUpdatePresenter = new CheckUpdatePresenter(this, this);
+        checkUpdatePresenter.checkUpdate();
     }
 
 
@@ -75,6 +76,7 @@ public class SplashActivity extends AppCompatActivity implements ISplashView {
             @Override
             public void run() {
                 startActivity(new Intent(SplashActivity.this, MainActivity.class));
+                finish();
             }
         }, delay);
 

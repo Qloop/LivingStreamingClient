@@ -10,6 +10,6 @@ import rx.Observable;
  */
 
 public interface UpdateInterface {
-    @GET("update/getUpdateInfo")
+    @GET("update/check")
     Observable<UpdateInfo> getCheckUpdateInfo();
 }

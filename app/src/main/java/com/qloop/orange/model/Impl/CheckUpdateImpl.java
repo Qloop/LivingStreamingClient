@@ -43,7 +43,8 @@ public class CheckUpdateImpl implements ICheckUpdate {
 
                     @Override
                     public void onError(Throwable e) {
-
+                        onCheckUpdateListener.accessTimeOut();
+                        e.printStackTrace();
                     }
 
                     @Override

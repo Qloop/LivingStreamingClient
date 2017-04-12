@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="45dp"
+              android:background="@android:color/white"
+              android:gravity="center_horizontal"
+              android:orientation="horizontal"
+              android:weightSum="4">
+
+    <TextView
+        android:id="@+id/tv_main"
+        style="@style/TabTextViewStyle"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:drawablePadding="2dp"
+        android:drawableTop="@mipmap/home"
+        android:text="@string/str_main_page"/>
+
+    <TextView
+        android:id="@+id/tv_rss"
+        style="@style/TabTextViewStyle"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:drawablePadding="2dp"
+        android:drawableTop="@mipmap/rss"
+        android:text="@string/str_rss"/>
+
+    <TextView
+        android:id="@+id/tv_user"
+        style="@style/TabTextViewStyle"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:drawablePadding="2dp"
+        android:drawableTop="@mipmap/user"
+        android:text="@string/str_mine"/>
+
+
+</LinearLayout>

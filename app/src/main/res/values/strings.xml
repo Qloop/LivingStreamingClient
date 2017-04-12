@@ -66,4 +66,7 @@
     <string name="VideoView_player_AndroidMediaPlayer">Player: AndroidMediaPlayer</string>
     <string name="VideoView_player_IjkMediaPlayer">Player: IjkMediaPlayer</string>
     <string name="VideoView_player_IjkExoMediaPlayer">Player: IjkExoMediaPlayer</string>
+    <string name="str_main_page">首页</string>
+    <string name="str_rss">订阅</string>
+    <string name="str_mine">我的</string>
 </resources>

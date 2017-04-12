@@ -10,4 +10,5 @@ public interface OnCheckUpdateListener {
     void isLastVersion();
     void isOldVersion();
     void checkVersion(UpdateInfo updateInfo);
+    void accessTimeOut();
 }
