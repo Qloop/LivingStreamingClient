@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 public abstract class BaseFragment extends Fragment {
 	public Activity mActivity;//依附的Activity
 

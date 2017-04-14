@@ -13,11 +13,14 @@ import com.qloop.orange.R;
 import com.qloop.orange.utils.SystemBarTintManager;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * BaseActivity
  */
 public abstract class BaseActivity extends AppCompatActivity {
+
+    private Unbinder unbinder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +33,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
         init();
         setContentView(setLayoutResourceID());
-        ButterKnife.bind(this);
+        unbinder = ButterKnife.bind(this);
         initViews();
         initData();
     }
@@ -80,4 +83,8 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        unbinder.unbind();
+    }
 }
