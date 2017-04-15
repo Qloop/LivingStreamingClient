@@ -49,7 +49,9 @@ public class HomeFragment extends BaseFragment implements IHomeFragment {
         View view = View.inflate(mActivity, R.layout.fragment_home, null);
         unbinder = ButterKnife.bind(this, view);
         setUpViewPager();
-        mRefreshView.setColorSchemeColors(new int[]{R.color.colorPrimary});
+        mRefreshView.setColorSchemeResources(R.color.colorPrimary, R.color.colorPrimaryDark);
+//        mRefreshView.setColorSchemeColors(R.color.colorAccent, R.color.colorPrimaryDark);
+//        mRefreshView.setColorSchemeColors(Color.parseColor("#FF4081"), Color.parseColor("#303F9F"));
         mRefreshView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {

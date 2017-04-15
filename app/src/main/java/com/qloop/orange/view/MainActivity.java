@@ -1,6 +1,7 @@
 package com.qloop.orange.view;
 
 import android.graphics.drawable.Drawable;
+import android.os.Environment;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.content.ContextCompat;
@@ -15,6 +16,8 @@ import com.qloop.orange.view.fragment.HomeFragment;
 import com.qloop.orange.view.fragment.RssFragment;
 import com.qloop.orange.view.fragment.UserFragment;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
