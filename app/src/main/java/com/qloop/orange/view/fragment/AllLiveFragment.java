@@ -1,5 +1,6 @@
 package com.qloop.orange.view.fragment;
 
+import android.content.Intent;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,7 @@ import com.qloop.orange.bean.LiveListInfo;
 import com.qloop.orange.presenter.AllLivePresenter;
 import com.qloop.orange.utils.ToastUtils;
 import com.qloop.orange.view.Iview.IAllLiveFragmemt;
+import com.qloop.orange.view.PullActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -53,6 +55,7 @@ public class AllLiveFragment extends BaseFragment implements IAllLiveFragmemt {
         adapter.setOnItemClickListener(new AllLiveAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
+                toLiveRoom();
                 ToastUtils.showToastShort(mActivity, position + "");
             }
         });
@@ -60,6 +63,6 @@ public class AllLiveFragment extends BaseFragment implements IAllLiveFragmemt {
 
     @Override
     public void toLiveRoom() {
-
+        startActivity(new Intent(mActivity, PullActivity.class));
     }
 }

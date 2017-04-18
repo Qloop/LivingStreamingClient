@@ -21,7 +21,6 @@ public class AllLivePresenter {
     }
 
     public void getData() {
-        System.out.println("getDate！！！！！！！！！！！！！！！！！！！！！！！！！");
         liveList.getLiveList(new OnLiveListListener() {
             @Override
             public void setData(LiveListInfo liveListInfo) {
