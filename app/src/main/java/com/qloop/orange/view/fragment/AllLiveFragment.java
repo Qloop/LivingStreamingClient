@@ -17,6 +17,7 @@ import com.qloop.orange.view.PullActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by Qloop on 2017/4/13.
@@ -32,11 +33,12 @@ public class AllLiveFragment extends BaseFragment implements IAllLiveFragmemt {
     AllLivePresenter allLivePresenter;
     private AllLiveAdapter adapter;
     private LiveListInfo liveListInfo;
+    private Unbinder unbinder;
 
     @Override
     public View initViews() {
         View rootView = View.inflate(mActivity, R.layout.fragment_all_live, null);
-        ButterKnife.bind(this, rootView);
+        unbinder = ButterKnife.bind(this, rootView);
         allLivePresenter = new AllLivePresenter(this);
         allLivePresenter.getData();
         return rootView;
@@ -64,5 +66,10 @@ public class AllLiveFragment extends BaseFragment implements IAllLiveFragmemt {
     @Override
     public void toLiveRoom() {
         startActivity(new Intent(mActivity, PullActivity.class));
+    }
+
+    @Override
+    public void onDestroy() {
+        unbinder.unbind();
     }
 }

@@ -1,6 +1,8 @@
 package com.qloop.orange.view.fragment;
 
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -21,6 +23,7 @@ import com.qloop.orange.wight.TopViewPager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 /**
  * Created by Qloop on 2017/4/13.
@@ -29,16 +32,21 @@ import butterknife.ButterKnife;
 public class RecommendFragment extends BaseFragment implements IRecommendFragment {
 
     private static final String TAG = "RECOMMEND";
-    //    @BindView(R.id.rl_recommend)
+    @BindView(R.id.rl_recommend)
     RecyclerView mRecyclerView;
+    //    @BindView(R.id.vp_top_carousel)
+    TopViewPager mViewPager;
     private TopRecommendInfo topRecommendInfo;
+    private Unbinder unbinder;
+    private Handler mHandler;
+    private int currentItem = 0;
 
     @Override
     public View initViews() {
         View rootView = View.inflate(mActivity, R.layout.fragment_recommend, null);
         View heardView = View.inflate(mActivity, R.layout.header_recommend, null);
-        mRecyclerView = (RecyclerView) rootView.findViewById(R.id.rl_recommend);
-        ButterKnife.bind(this, rootView);
+        unbinder = ButterKnife.bind(this, rootView);
+        mViewPager = (TopViewPager) heardView.findViewById(R.id.vp_top_carousel);
         RecommendPresenter recommendPresenter = new RecommendPresenter(this);
         recommendPresenter.getData();
         recommendPresenter.getContentData();
@@ -48,18 +56,15 @@ public class RecommendFragment extends BaseFragment implements IRecommendFragmen
     @Override
     public <T> void setTopData(T data) {
         topRecommendInfo = (TopRecommendInfo) data;
-        Log.i(TAG, "topdata+++++++++++++++++++++++");
     }
 
     @Override
     public <T> void createAdapter(T data) {
-
-        Log.i(TAG, "create+++++++++++++++++++++++");
         LiveListInfo liveListInfo = (LiveListInfo) data;
         if (liveListInfo != null) {
             System.out.println("#############" + liveListInfo.getLiveList().get(0).getLiveName());
         }
-        RecommendAdapter adapter = new RecommendAdapter(mActivity, liveListInfo.getLiveList(), topRecommendInfo.getTopData());
+        RecommendAdapter adapter = new RecommendAdapter(mActivity, liveListInfo.getLiveList(), topRecommendInfo.getTopData(), this);
         System.out.println("())))))))))))((((" + adapter.getItemCount());
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(mActivity, 2);
@@ -104,11 +109,41 @@ public class RecommendFragment extends BaseFragment implements IRecommendFragmen
 
             }
         });
-
     }
 
     @Override
     public void toLiveRoom() {
         startActivity(new Intent(mActivity, PullActivity.class));
+    }
+
+    @Override
+    public void autoToNextViewPager(final TopViewPager topViewPager) {
+        if (mHandler == null) {
+            mHandler = new Handler() {
+                public void handleMessage(android.os.Message msg) {
+                    currentItem = topViewPager.getCurrentItem();
+                    if (currentItem < topViewPager.getAdapter().getCount() - 1) { //这里写死了  其实应该根据数据size来判断
+                        currentItem++;
+                        System.out.println(",,,,,,,,,,," + currentItem);
+                        topViewPager.setCurrentItem(currentItem);// 切换到下一个页面
+                    } else {
+                        System.out.println("。。。。。。。" + currentItem);
+                        currentItem = 0;
+                        topViewPager.setCurrentItem(currentItem, false);// 切换到下一个页面
+                    }
+
+                    mHandler.sendEmptyMessageDelayed(0, 3000);// 继续延时3秒发消息, 形成循环
+                }
+
+            };
+
+            mHandler.sendEmptyMessageDelayed(0, 3000);// 延时3秒后发消息
+        }
+    }
+
+    @Override
+    public void onDestroy() {
+        unbinder.unbind();
+//        unbinderHeader.unbind();
     }
 }

@@ -27,6 +27,7 @@ public class RecommendPresenter {
             @Override
             public void setTopData(TopRecommendInfo topRecommendInfo) {
                 recommendFragment.setTopData(topRecommendInfo);
+//                recommendFragment.autoToNextViewPager();
             }
 
             @Override
@@ -37,7 +38,7 @@ public class RecommendPresenter {
         });
     }
 
-    public void getContentData(){
+    public void getContentData() {
         recommendModel.getRecommendContentData(new OnRecommendListener() {
             @Override
             public void setTopData(TopRecommendInfo topRecommendInfo) {

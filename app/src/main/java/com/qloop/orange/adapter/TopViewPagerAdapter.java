@@ -38,7 +38,7 @@ public class TopViewPagerAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return false;
+        return view == object;
     }
 
     @Override
@@ -55,10 +55,11 @@ public class TopViewPagerAdapter extends PagerAdapter {
         ImageView imageView = (ImageView) rootView.findViewById(R.id.iv_top);
         Glide.with(mContext)
                 .load(topDataBean.getPicUrl())
-                .centerCrop()
                 .placeholder(R.mipmap.home_list_item_bg)
                 .crossFade()
+                .error(R.mipmap.home_list_item_bg)
                 .into(imageView);
+        System.out.println(topDataBean.getPicUrl() + "***********************************");
         if (onItemClickListener != null) {
             rootView.setOnClickListener(new View.OnClickListener() {
                 @Override

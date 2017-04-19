@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.qloop.orange.R;
 import com.qloop.orange.bean.LiveListInfo;
+import com.qloop.orange.view.Iview.IRecommendFragment;
 import com.qloop.orange.wight.TopViewPager;
 
 import java.util.List;
@@ -37,6 +38,8 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private int mHeaderCount = 1;
     private int mBottomCount = 0;
 
+    private IRecommendFragment recommendFragment;
+
     public interface OnItemClickListener {
         void onItemClick(View view, int position);
 
@@ -61,12 +64,13 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         mOnTopItemClickListener = listener;
     }
 
-    public RecommendAdapter(Context mContext, List<?> mContentData, List<?> mHeaderData) {
+    public RecommendAdapter(Context mContext, List<?> mContentData, List<?> mHeaderData, IRecommendFragment recommendFragment) {
         System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
         this.mContext = mContext;
         this.mContentData = mContentData;
         this.mHeaderData = mHeaderData;
         mLayoutInflater = LayoutInflater.from(mContext);
+        this.recommendFragment = recommendFragment;
     }
 
     //内容长度
@@ -104,27 +108,27 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     //内容 ViewHolder
     public class RecommendViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         RelativeLayout itemRootView;
-//        @BindView(R.id.iv_thumbnail)
-//        ImageView ivThumbnail;
-//        @BindView(R.id.tv_live_name)
-//        TextView tvLiveName;
-//        @BindView(R.id.tv_live_room_name)
-//        TextView tvLiveRoomName;
-//        @BindView(R.id.tv_watch_count)
-//        TextView tvWatchCount;
-        TextView tvLiveRoomName;
-        TextView tvLiveName;
+        @BindView(R.id.iv_thumbnail)
         ImageView ivThumbnail;
+        @BindView(R.id.tv_live_name)
+        TextView tvLiveName;
+        @BindView(R.id.tv_live_room_name)
+        TextView tvLiveRoomName;
+        @BindView(R.id.tv_watch_count)
         TextView tvWatchCount;
+//        TextView tvLiveRoomName;
+//        TextView tvLiveName;
+//        ImageView ivThumbnail;
+//        TextView tvWatchCount;
 
         public RecommendViewHolder(View itemView) {
             super(itemView);
             itemRootView = (RelativeLayout) itemView;
             ButterKnife.bind(this, itemView);
-            ivThumbnail = (ImageView) itemView.findViewById(R.id.iv_thumbnail);
-            tvLiveName = (TextView) itemView.findViewById(R.id.tv_live_name);
-            tvLiveRoomName = (TextView) itemView.findViewById(R.id.tv_live_room_name);
-            tvWatchCount = (TextView) itemView.findViewById(R.id.tv_watch_count);
+//            ivThumbnail = (ImageView) itemView.findViewById(R.id.iv_thumbnail);
+//            tvLiveName = (TextView) itemView.findViewById(R.id.tv_live_name);
+//            tvLiveRoomName = (TextView) itemView.findViewById(R.id.tv_live_room_name);
+//            tvWatchCount = (TextView) itemView.findViewById(R.id.tv_watch_count);
             itemRootView.setOnClickListener(this);
         }
 
@@ -160,7 +164,6 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (viewType == ITEM_TYPE_HEADER) {
-            System.out.println("/////////////////////////////////");
             return new HeaderViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.header_recommend, parent, false));
         } else if (viewType == ITEM_TYPE_CONTENT) {
             System.out.println("--------------------------------------");
@@ -177,7 +180,9 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
         if (holder instanceof HeaderViewHolder) {
             if (mHeaderData != null) {
+                System.out.println("viewpager ========================================");
                 ((HeaderViewHolder) holder).heardViewPager.setAdapter(new TopViewPagerAdapter(mHeaderData, mContext));
+                recommendFragment.autoToNextViewPager(((HeaderViewHolder) holder).heardViewPager);
             }
             //设置item点击事件
             if (mOnTopItemClickListener != null) {
