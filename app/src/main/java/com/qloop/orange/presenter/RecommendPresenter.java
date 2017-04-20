@@ -2,8 +2,8 @@ package com.qloop.orange.presenter;
 
 import com.qloop.orange.bean.LiveListInfo;
 import com.qloop.orange.bean.TopRecommendInfo;
-import com.qloop.orange.model.IRecommend;
-import com.qloop.orange.model.Impl.RecommendImpl;
+import com.qloop.orange.model.IRecommendModel;
+import com.qloop.orange.model.Impl.RecommendModelImpl;
 import com.qloop.orange.model.OnRecommendListener;
 import com.qloop.orange.view.Iview.IRecommendFragment;
 
@@ -14,12 +14,12 @@ import com.qloop.orange.view.Iview.IRecommendFragment;
 public class RecommendPresenter {
 
     private IRecommendFragment recommendFragment;
-    private IRecommend recommendModel;
+    private IRecommendModel recommendModel;
 
 
     public RecommendPresenter(IRecommendFragment recommendFragment) {
         this.recommendFragment = recommendFragment;
-        recommendModel = new RecommendImpl();
+        recommendModel = new RecommendModelImpl();
     }
 
     public void getData() {

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:background="@android:color/white"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/iv_thumbnail_rss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/home_list_item_bg"/>
+
+    <TextView
+        android:id="@+id/tv_rss_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/iv_thumbnail_rss"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:padding="5dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="14sp"
+        tools:text="【龙之谷】熊猫第一舞娘回归"/>
+
+    <TextView
+        android:id="@+id/tv_str_anchor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_rss_name"
+        android:layout_toEndOf="@+id/iv_thumbnail_rss"
+        android:padding="5dp"
+        android:text="@string/str_anchor"
+        android:textColor="@color/colorGray2"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/tv_anchor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_rss_name"
+        android:layout_toEndOf="@+id/tv_str_anchor"
+        android:padding="5dp"
+        android:textColor="@color/colorGray2"
+        android:textSize="12sp"
+        tools:text="漫步"/>
+
+    <TextView
+        android:id="@+id/tv_str_watch_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_str_anchor"
+        android:layout_toEndOf="@+id/iv_thumbnail_rss"
+        android:padding="5dp"
+        android:text="@string/str_anchor"
+        android:textColor="@color/colorGray2"
+        android:textSize="12sp"/>
+
+    <TextView
+        android:id="@+id/tv_watch_count_rss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_anchor"
+        android:layout_toEndOf="@+id/tv_str_watch_count"
+        android:padding="5dp"
+        android:textColor="@color/colorGray2"
+        android:textSize="12sp"
+        tools:text="123"/>
+</RelativeLayout>

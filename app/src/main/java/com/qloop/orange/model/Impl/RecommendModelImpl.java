@@ -4,7 +4,7 @@ import android.util.Log;
 
 import com.qloop.orange.bean.LiveListInfo;
 import com.qloop.orange.bean.TopRecommendInfo;
-import com.qloop.orange.model.IRecommend;
+import com.qloop.orange.model.IRecommendModel;
 import com.qloop.orange.model.OnRecommendListener;
 import com.qloop.orange.netInterface.RecommendNetInterface;
 
@@ -22,7 +22,7 @@ import rx.schedulers.Schedulers;
  * Created by Qloop on 2017/4/17.
  */
 
-public class RecommendImpl implements IRecommend {
+public class RecommendModelImpl implements IRecommendModel {
 
 
     private static final String TAG = "RECOMMEND";

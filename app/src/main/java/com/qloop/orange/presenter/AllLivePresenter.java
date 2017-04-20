@@ -1,8 +1,8 @@
 package com.qloop.orange.presenter;
 
 import com.qloop.orange.bean.LiveListInfo;
-import com.qloop.orange.model.ILiveList;
-import com.qloop.orange.model.Impl.LiveListImpl;
+import com.qloop.orange.model.ILiveListModel;
+import com.qloop.orange.model.Impl.LiveListModelImpl;
 import com.qloop.orange.model.OnLiveListListener;
 import com.qloop.orange.view.Iview.IAllLiveFragmemt;
 
@@ -13,11 +13,11 @@ import com.qloop.orange.view.Iview.IAllLiveFragmemt;
 public class AllLivePresenter {
 
     private IAllLiveFragmemt allLiveFragmemt;
-    private ILiveList liveList;
+    private ILiveListModel liveList;
 
     public AllLivePresenter(IAllLiveFragmemt allLiveFragmemt) {
         this.allLiveFragmemt = allLiveFragmemt;
-        liveList = new LiveListImpl();
+        liveList = new LiveListModelImpl();
     }
 
     public void getData() {

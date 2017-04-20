@@ -69,4 +69,5 @@
     <string name="str_main_page">首页</string>
     <string name="str_rss">订阅</string>
     <string name="str_mine">我的</string>
+    <string name="str_anchor">主播: </string>
 </resources>

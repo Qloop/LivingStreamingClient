@@ -5,4 +5,10 @@ package com.qloop.orange.view.Iview;
  */
 
 public interface IRssFragment {
+
+    <T> void createAdapter(T data);
+
+    void stopRefresh();
+
+    void toLiveRoom();
 }

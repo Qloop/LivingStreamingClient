@@ -1,8 +1,7 @@
 package com.qloop.orange.model.Impl;
 
 import com.qloop.orange.bean.LiveListInfo;
-import com.qloop.orange.config.AppConfig;
-import com.qloop.orange.model.ILiveList;
+import com.qloop.orange.model.ILiveListModel;
 import com.qloop.orange.model.OnLiveListListener;
 import com.qloop.orange.netInterface.LiveListInterface;
 
@@ -20,7 +19,7 @@ import rx.schedulers.Schedulers;
  * Created by Qloop on 2017/4/15.
  */
 
-public class LiveListImpl implements ILiveList {
+public class LiveListModelImpl implements ILiveListModel {
 
     @Override
     public void getLiveList(final OnLiveListListener onLiveListListener) {

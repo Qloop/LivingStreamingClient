@@ -6,8 +6,8 @@ import android.content.pm.PackageManager;
 import android.util.Log;
 
 import com.qloop.orange.bean.UpdateInfo;
-import com.qloop.orange.model.ICheckUpdate;
-import com.qloop.orange.model.Impl.CheckUpdateImpl;
+import com.qloop.orange.model.ICheckUpdateModel;
+import com.qloop.orange.model.Impl.CheckUpdateModelImpl;
 import com.qloop.orange.model.OnCheckUpdateListener;
 import com.qloop.orange.utils.ToastUtils;
 import com.qloop.orange.view.Iview.ISplashView;
@@ -17,14 +17,14 @@ import com.qloop.orange.view.Iview.ISplashView;
  */
 
 public class CheckUpdatePresenter {
-    private ICheckUpdate checkUpdate;
+    private ICheckUpdateModel checkUpdate;
     private ISplashView splashView;
     private Context mContext;
 
     public CheckUpdatePresenter(ISplashView splashView, Context context) {
         this.splashView = splashView;
         mContext = context;
-        checkUpdate = new CheckUpdateImpl();
+        checkUpdate = new CheckUpdateModelImpl();
     }
 
     public void checkUpdate() {
