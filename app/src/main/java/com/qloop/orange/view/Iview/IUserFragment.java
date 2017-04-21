@@ -5,4 +5,6 @@ package com.qloop.orange.view.Iview;
  */
 
 public interface IUserFragment {
+
+    void onError();
 }

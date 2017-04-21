@@ -10,4 +10,9 @@ public interface IAllLiveFragmemt {
     <T> void createAdapter(T data);
 
     void toLiveRoom();
+
+    void onError();
+
+    void stopRefresh();
+
 }

@@ -16,4 +16,8 @@ public interface IRecommendFragment {
 
     void autoToNextViewPager(TopViewPager topViewPager);
 
+    void onError();
+
+    void stopRefresh();
+
 }

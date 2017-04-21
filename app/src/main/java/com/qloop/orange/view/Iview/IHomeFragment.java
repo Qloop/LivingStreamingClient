@@ -8,4 +8,6 @@ public interface IHomeFragment {
     void setUpViewPager();
 
     void refreshData();
+
+    void stopRefresh();
 }

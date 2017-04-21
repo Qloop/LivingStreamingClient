@@ -3,6 +3,7 @@ package com.qloop.orange.view.fragment;
 import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -34,6 +35,8 @@ public class RecommendFragment extends BaseFragment implements IRecommendFragmen
     private static final String TAG = "RECOMMEND";
     @BindView(R.id.rl_recommend)
     RecyclerView mRecyclerView;
+    @BindView(R.id.srl_recommend)
+    SwipeRefreshLayout mRefreshView;
     //    @BindView(R.id.vp_top_carousel)
     TopViewPager mViewPager;
     private TopRecommendInfo topRecommendInfo;
@@ -47,9 +50,18 @@ public class RecommendFragment extends BaseFragment implements IRecommendFragmen
         View heardView = View.inflate(mActivity, R.layout.header_recommend, null);
         unbinder = ButterKnife.bind(this, rootView);
         mViewPager = (TopViewPager) heardView.findViewById(R.id.vp_top_carousel);
-        RecommendPresenter recommendPresenter = new RecommendPresenter(this);
+        final RecommendPresenter recommendPresenter = new RecommendPresenter(this);
         recommendPresenter.getData();
         recommendPresenter.getContentData();
+
+        mRefreshView.setColorSchemeResources(R.color.colorPrimary, R.color.colorPrimaryDark);
+        mRefreshView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                recommendPresenter.getData();
+                recommendPresenter.getContentData();
+            }
+        });
         return rootView;
     }
 
@@ -139,6 +151,16 @@ public class RecommendFragment extends BaseFragment implements IRecommendFragmen
 
             mHandler.sendEmptyMessageDelayed(0, 3000);// 延时3秒后发消息
         }
+    }
+
+    @Override
+    public void onError() {
+        ToastUtils.showToastShort(mActivity, "数据错误");
+    }
+
+    @Override
+    public void stopRefresh() {
+        mRefreshView.setRefreshing(false);
     }
 
     @Override

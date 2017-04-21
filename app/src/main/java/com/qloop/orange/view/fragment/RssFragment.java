@@ -30,6 +30,7 @@ public class RssFragment extends BaseFragment implements IRssFragment {
     @BindView(R.id.srl_rss)
     SwipeRefreshLayout mRefreshLayout;
     private RssPresenter rssPresenter;
+    private RssListInfo rssListInfo;
 
     @Override
     public View initViews() {
@@ -42,7 +43,7 @@ public class RssFragment extends BaseFragment implements IRssFragment {
         mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-
+                rssPresenter.getData();
             }
         });
         return view;
@@ -50,7 +51,7 @@ public class RssFragment extends BaseFragment implements IRssFragment {
 
     @Override
     public <T> void createAdapter(T data) {
-        RssListInfo rssListInfo = (RssListInfo) data;
+        rssListInfo = (RssListInfo) data;
         final RssAdapter rssAdapter = new RssAdapter(mActivity, rssListInfo.getRssData());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mActivity);
         mRecyclerView.setLayoutManager(linearLayoutManager);
@@ -67,12 +68,18 @@ public class RssFragment extends BaseFragment implements IRssFragment {
 
     @Override
     public void stopRefresh() {
+        System.out.println("stop*********************//////////**********");
         mRefreshLayout.setRefreshing(false);
     }
 
     @Override
     public void toLiveRoom() {
 
+    }
+
+    @Override
+    public void onError() {
+        ToastUtils.showToastShort(mActivity, "数据错误");
     }
 
     @Override

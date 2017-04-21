@@ -4,6 +4,7 @@ import com.qloop.orange.bean.RssListInfo;
 import com.qloop.orange.model.IRssModel;
 import com.qloop.orange.model.OnRssListListener;
 import com.qloop.orange.netInterface.RssNetInterface;
+import com.qloop.orange.utils.ToastUtils;
 
 import java.util.concurrent.TimeUnit;
 
@@ -41,7 +42,7 @@ public class RssListModelImpl implements IRssModel {
 
                     @Override
                     public void onError(Throwable e) {
-
+                        e.printStackTrace();
                     }
 
                     @Override

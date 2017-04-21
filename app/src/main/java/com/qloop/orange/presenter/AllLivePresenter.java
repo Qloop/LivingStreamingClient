@@ -4,6 +4,7 @@ import com.qloop.orange.bean.LiveListInfo;
 import com.qloop.orange.model.ILiveListModel;
 import com.qloop.orange.model.Impl.LiveListModelImpl;
 import com.qloop.orange.model.OnLiveListListener;
+import com.qloop.orange.utils.ToastUtils;
 import com.qloop.orange.view.Iview.IAllLiveFragmemt;
 
 /**
@@ -24,7 +25,13 @@ public class AllLivePresenter {
         liveList.getLiveList(new OnLiveListListener() {
             @Override
             public void setData(LiveListInfo liveListInfo) {
+                allLiveFragmemt.stopRefresh();
                 allLiveFragmemt.createAdapter(liveListInfo);
+            }
+
+            @Override
+            public void accessError() {
+                allLiveFragmemt.onError();
             }
         });
     }

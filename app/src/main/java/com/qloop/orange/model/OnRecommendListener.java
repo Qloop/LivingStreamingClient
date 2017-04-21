@@ -11,4 +11,6 @@ public interface OnRecommendListener {
     void setTopData(TopRecommendInfo topRecommendInfo);
 
     void setContentData(LiveListInfo liveListInfo);
+
+    void accessError();
 }

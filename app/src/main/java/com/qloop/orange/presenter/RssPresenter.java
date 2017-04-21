@@ -29,6 +29,11 @@ public class RssPresenter {
                 rssFragment.stopRefresh();
                 rssFragment.createAdapter(rssListInfo);
             }
+
+            @Override
+            public void accessError() {
+                rssFragment.onError();
+            }
         });
     }
 }

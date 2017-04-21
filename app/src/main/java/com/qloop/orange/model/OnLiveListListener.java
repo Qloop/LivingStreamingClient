@@ -8,4 +8,5 @@ import com.qloop.orange.bean.LiveListInfo;
 
 public interface OnLiveListListener {
     void setData(LiveListInfo liveListInfo);
+    void accessError();
 }

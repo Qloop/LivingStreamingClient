@@ -41,23 +41,21 @@ public class HomeFragment extends BaseFragment implements IHomeFragment {
     AppBarLayout mAppbar;
     @BindView(R.id.vp_main_pager)
     MainPagerViewPager vpMainPager;
-    @BindView(R.id.srl_refresh)
-    SwipeRefreshLayout mRefreshView;
 
     @Override
     public View initViews() {
         View view = View.inflate(mActivity, R.layout.fragment_home, null);
         unbinder = ButterKnife.bind(this, view);
         setUpViewPager();
-        mRefreshView.setColorSchemeResources(R.color.colorPrimary, R.color.colorPrimaryDark);
+//        mRefreshView.setColorSchemeResources(R.color.colorPrimary, R.color.colorPrimaryDark);
 //        mRefreshView.setColorSchemeColors(R.color.colorAccent, R.color.colorPrimaryDark);
 //        mRefreshView.setColorSchemeColors(Color.parseColor("#FF4081"), Color.parseColor("#303F9F"));
-        mRefreshView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                refreshData();
-            }
-        });
+//        mRefreshView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+//            @Override
+//            public void onRefresh() {
+//                refreshData();
+//            }
+//        });
         return view;
     }
 
@@ -106,6 +104,11 @@ public class HomeFragment extends BaseFragment implements IHomeFragment {
 
     @Override
     public void refreshData() {
+
+    }
+
+    @Override
+    public void stopRefresh() {
 
     }
 }

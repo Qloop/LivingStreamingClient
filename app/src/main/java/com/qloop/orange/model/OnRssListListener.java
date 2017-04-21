@@ -9,4 +9,6 @@ import com.qloop.orange.bean.RssListInfo;
 
 public interface OnRssListListener {
     void setData(RssListInfo rssListInfo);
+
+    void accessError();
 }

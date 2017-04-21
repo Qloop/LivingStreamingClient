@@ -35,6 +35,11 @@ public class RecommendPresenter {
 
             }
 
+            @Override
+            public void accessError() {
+                recommendFragment.onError();
+            }
+
         });
     }
 
@@ -47,7 +52,13 @@ public class RecommendPresenter {
 
             @Override
             public void setContentData(LiveListInfo liveListInfo) {
+                recommendFragment.stopRefresh();
                 recommendFragment.createAdapter(liveListInfo);
+            }
+
+            @Override
+            public void accessError() {
+                recommendFragment.onError();
             }
         });
     }

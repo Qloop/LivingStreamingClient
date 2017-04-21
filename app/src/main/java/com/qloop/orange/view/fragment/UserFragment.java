@@ -3,6 +3,7 @@ package com.qloop.orange.view.fragment;
 import android.view.View;
 
 import com.qloop.orange.R;
+import com.qloop.orange.utils.ToastUtils;
 import com.qloop.orange.view.Iview.IUserFragment;
 
 /**
@@ -14,5 +15,10 @@ public class UserFragment extends BaseFragment implements IUserFragment {
     public View initViews() {
         View view = View.inflate(mActivity, R.layout.fragment_user, null);
         return view;
+    }
+
+    @Override
+    public void onError() {
+        ToastUtils.showToastShort(mActivity, "数据错误");
     }
 }

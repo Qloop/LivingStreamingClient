@@ -1,6 +1,7 @@
 package com.qloop.orange.view.fragment;
 
 import android.content.Intent;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,6 +30,8 @@ public class AllLiveFragment extends BaseFragment implements IAllLiveFragmemt {
     private static final String TAG = "ALL_LIVE";
     @BindView(R.id.rv_live_list)
     RecyclerView rlLiveList;
+    @BindView(R.id.srl_all_live)
+    SwipeRefreshLayout mRefreshView;
 
     AllLivePresenter allLivePresenter;
     private AllLiveAdapter adapter;
@@ -41,6 +44,14 @@ public class AllLiveFragment extends BaseFragment implements IAllLiveFragmemt {
         unbinder = ButterKnife.bind(this, rootView);
         allLivePresenter = new AllLivePresenter(this);
         allLivePresenter.getData();
+
+        mRefreshView.setColorSchemeResources(R.color.colorPrimary, R.color.colorPrimaryDark);
+        mRefreshView.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                allLivePresenter.getData();
+            }
+        });
         return rootView;
     }
 
@@ -66,6 +77,16 @@ public class AllLiveFragment extends BaseFragment implements IAllLiveFragmemt {
     @Override
     public void toLiveRoom() {
         startActivity(new Intent(mActivity, PullActivity.class));
+    }
+
+    @Override
+    public void onError() {
+        ToastUtils.showToastShort(mActivity, "数据错误");
+    }
+
+    @Override
+    public void stopRefresh() {
+        mRefreshView.setRefreshing(false);
     }
 
     @Override

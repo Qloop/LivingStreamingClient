@@ -11,4 +11,6 @@ public interface IRssFragment {
     void stopRefresh();
 
     void toLiveRoom();
+
+    void onError();
 }
