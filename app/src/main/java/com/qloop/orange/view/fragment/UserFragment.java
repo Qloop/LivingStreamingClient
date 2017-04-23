@@ -1,5 +1,6 @@
 package com.qloop.orange.view.fragment;
 
+import android.util.Log;
 import android.view.View;
 
 import com.qloop.orange.R;
@@ -14,6 +15,7 @@ public class UserFragment extends BaseFragment implements IUserFragment {
     @Override
     public View initViews() {
         View view = View.inflate(mActivity, R.layout.fragment_user, null);
+        Log.i("VIEW", "USER************-///////////////////////////////////////////");
         return view;
     }
 

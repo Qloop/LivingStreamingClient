@@ -70,4 +70,8 @@
     <string name="str_rss">订阅</string>
     <string name="str_mine">我的</string>
     <string name="str_anchor">主播: </string>
+    <string name="str_apply_host">我要当主播</string>
+    <string name="str_my_rss">我的订阅</string>
+    <string name="str_history">观看历史</string>
+    <string name="str_letter">私信</string>
 </resources>

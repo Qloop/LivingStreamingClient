@@ -5,4 +5,11 @@
         <attr name="borderWith" format="dimension"/>
         <attr name="borderColor" format="color"/>
     </declare-styleable>
+
+    <declare-styleable name="ProfileItemLayout">
+        <attr name="profile_icon" format="reference"/>
+        <attr name="profile_title" format="string|reference"/>
+        <attr name="profile_subtitle" format="string|reference"/>
+        <attr name="profile_showBaseLine" format="boolean"/>
+    </declare-styleable>
 </resources>
