@@ -54,6 +54,7 @@
         <activity android:name=".view.CreateRoomActivity"/>
 
         <activity android:name=".view.PullActivity"/>
+        <activity android:name=".view.SettingsActivity"/>
 
     </application>
 

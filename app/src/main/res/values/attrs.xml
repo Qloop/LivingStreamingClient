@@ -12,4 +12,10 @@
         <attr name="profile_subtitle" format="string|reference"/>
         <attr name="profile_showBaseLine" format="boolean"/>
     </declare-styleable>
+
+    <declare-styleable name="TopBarView">
+        <attr name="topTitle" format="string"/>
+        <attr name="topSubtitle" format="string"/>
+        <attr name="topIcon" format="reference"/>
+    </declare-styleable>
 </resources>

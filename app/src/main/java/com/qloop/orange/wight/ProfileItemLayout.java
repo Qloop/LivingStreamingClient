@@ -58,7 +58,11 @@ public class ProfileItemLayout extends RelativeLayout {
         tvTitle = (TextView) findViewById(R.id.tv_title);
         tvSubtitle = (TextView) findViewById(R.id.tv_subTitle);
         View vBaseLine = findViewById(R.id.v_baseline);
-        ivIcon.setImageResource(icon);
+        if (icon == 0) {
+            ivIcon.setVisibility(View.GONE);
+        } else {
+            ivIcon.setImageResource(icon);
+        }
         if (!TextUtils.isEmpty(title)) {
             tvTitle.setText(title);
         }

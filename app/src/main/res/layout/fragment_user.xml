@@ -17,12 +17,14 @@
         android:padding="20dp">
 
         <com.qloop.orange.wight.CircleImageView
+            android:id="@+id/civ_avatar"
             android:layout_width="70dp"
             android:layout_height="70dp"
             android:src="@mipmap/ic_avatar_default"
             app:borderWith="0dp"/>
 
         <TextView
+            android:id="@+id/tv_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -31,63 +33,71 @@
             tools:text="泡面Code"/>
     </LinearLayout>
 
-    <!--<ScrollView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="match_parent">-->
-
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <com.qloop.orange.wight.ProfileItemLayout
-            android:id="@+id/ptl_apply_host"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:profile_icon="@mipmap/ic_profile_apply_host"
-            app:profile_title="@string/str_apply_host"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <View
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorGray"/>
+            <com.qloop.orange.wight.ProfileItemLayout
+                android:id="@+id/ptl_apply_host"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:profile_icon="@mipmap/ic_profile_apply_host"
+                app:profile_title="@string/str_apply_host"/>
 
-        <com.qloop.orange.wight.ProfileItemLayout
-            android:id="@+id/ptl_rss"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:profile_icon="@mipmap/ic_profile_follow"
-            app:profile_title="@string/str_my_rss"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/colorGray"/>
 
-        <View
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorGray"/>
+            <com.qloop.orange.wight.ProfileItemLayout
+                android:id="@+id/ptl_rss"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:profile_icon="@mipmap/ic_profile_follow"
+                app:profile_title="@string/str_my_rss"/>
 
-        <com.qloop.orange.wight.ProfileItemLayout
-            android:id="@+id/ptl_history"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:profile_icon="@mipmap/ic_profile_history"
-            app:profile_title="@string/str_history"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/colorGray"/>
 
-        <View
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/colorGray"/>
+            <com.qloop.orange.wight.ProfileItemLayout
+                android:id="@+id/ptl_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:profile_icon="@mipmap/ic_profile_history"
+                app:profile_title="@string/str_history"/>
 
-        <com.qloop.orange.wight.ProfileItemLayout
-            android:id="@+id/ptl_privateLetter"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:profile_icon="@mipmap/ic_profile_letter"
-            app:profile_title="@string/str_letter"/>
-    </LinearLayout>
-    <!--</ScrollView>-->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@color/colorGray"/>
+
+            <com.qloop.orange.wight.ProfileItemLayout
+                android:id="@+id/ptl_privateLetter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:profile_icon="@mipmap/ic_profile_letter"
+                app:profile_title="@string/str_letter"/>
+
+            <com.qloop.orange.wight.ProfileItemLayout
+                android:id="@+id/ptl_setting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:profile_icon="@mipmap/ic_profile_feedback"
+                app:profile_title="@string/str_setting"/>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

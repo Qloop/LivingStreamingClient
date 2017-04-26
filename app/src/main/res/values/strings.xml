@@ -74,4 +74,12 @@
     <string name="str_my_rss">我的订阅</string>
     <string name="str_history">观看历史</string>
     <string name="str_letter">私信</string>
+    <string name="str_setting">设置</string>
+    <string name="str_copyright">版权声明</string>
+    <string name="str_hardware_decode">硬件解码</string>
+    <string name="str_little_window">推出直播间时小窗播放</string>
+    <string name="str_suggestion">意见反馈</string>
+    <string name="str_check_update">检查更新</string>
+    <string name="str_about_us">关于我们</string>
+    <string name="str_quit">退出登陆</string>
 </resources>
