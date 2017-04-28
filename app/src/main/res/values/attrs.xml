@@ -14,8 +14,8 @@
     </declare-styleable>
 
     <declare-styleable name="TopBarView">
-        <attr name="topTitle" format="string"/>
-        <attr name="topSubtitle" format="string"/>
+        <attr name="topTitle" format="string|reference"/>
+        <attr name="topSubtitle" format="string|reference"/>
         <attr name="topIcon" format="reference"/>
     </declare-styleable>
 </resources>

@@ -164,8 +164,8 @@ public class RecommendFragment extends BaseFragment implements IRecommendFragmen
     }
 
     @Override
-    public void onDestroy() {
+    public void onDestroyView() {
+        super.onDestroyView();
         unbinder.unbind();
-//        unbinderHeader.unbind();
     }
 }

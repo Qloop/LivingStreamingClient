@@ -90,7 +90,8 @@ public class AllLiveFragment extends BaseFragment implements IAllLiveFragmemt {
     }
 
     @Override
-    public void onDestroy() {
+    public void onDestroyView() {
+        super.onDestroyView();
         unbinder.unbind();
     }
 }

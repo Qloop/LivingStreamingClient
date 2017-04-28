@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.qloop.orange.R;
 import com.qloop.orange.utils.ToastUtils;
 import com.qloop.orange.utils.UserCache;
 import com.qloop.orange.view.Iview.IUserFragment;
+import com.qloop.orange.view.LoginActivity;
 import com.qloop.orange.view.SettingsActivity;
 import com.qloop.orange.wight.CircleImageView;
 import com.qloop.orange.wight.ProfileItemLayout;
@@ -39,8 +41,12 @@ public class UserFragment extends BaseFragment implements IUserFragment {
     ProfileItemLayout ptlSetting;
     @BindView(R.id.tv_user_name)
     TextView tvUserName;
+    @BindView(R.id.btn_login)
+    Button btnLogin;
 
     Unbinder unbinder;
+
+    private static final String DEFAULT_USER_NAME = "未登陆";
 
     @Override
     public View initViews() {
@@ -48,12 +54,19 @@ public class UserFragment extends BaseFragment implements IUserFragment {
         unbinder = ButterKnife.bind(this, view);
         setUserInfo();
         return view;
-    } 
+    }
 
 
     private void setUserInfo() {
         String userName = UserCache.getUserName(mActivity);
-        tvUserName.setText(userName);
+        if (userName.equals(DEFAULT_USER_NAME)) {
+            tvUserName.setVisibility(View.GONE);
+            btnLogin.setVisibility(View.VISIBLE);
+        } else {
+            tvUserName.setVisibility(View.VISIBLE);
+            btnLogin.setVisibility(View.GONE);
+            tvUserName.setText(userName);
+        }
         //头像
 
     }
@@ -63,6 +76,12 @@ public class UserFragment extends BaseFragment implements IUserFragment {
         ToastUtils.showToastShort(mActivity, "数据错误");
     }
 
+
+    @OnClick(R.id.btn_login)
+    public void login() {
+        startActivity(new Intent(mActivity, LoginActivity.class));
+//        mActivity.finish();
+    }
 
     @OnClick(R.id.civ_avatar)
     public void changeUserInfo() {
@@ -92,6 +111,7 @@ public class UserFragment extends BaseFragment implements IUserFragment {
     @OnClick(R.id.ptl_setting)
     public void settings() {
         startActivity(new Intent(mActivity, SettingsActivity.class));
+//        mActivity.finish();
     }
 
     @Override

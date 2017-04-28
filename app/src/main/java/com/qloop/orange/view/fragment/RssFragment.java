@@ -82,8 +82,10 @@ public class RssFragment extends BaseFragment implements IRssFragment {
         ToastUtils.showToastShort(mActivity, "数据错误");
     }
 
+
     @Override
-    public void onDestroy() {
+    public void onDestroyView() {
+        super.onDestroyView();
         unbinder.unbind();
     }
 }

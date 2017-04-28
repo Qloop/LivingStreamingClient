@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:fitsSystemWindows="true"
+              android:gravity="center_horizontal"
+              android:orientation="vertical">
+
+    <com.qloop.orange.wight.TopBarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:topTitle="重置密码"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <EditText
+            android:id="@+id/et_lost_pwd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/prompt_email"
+            android:inputType="textEmailAddress"
+            android:maxLines="1"/>
+
+        <Button
+            android:id="@+id/btn_email_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/selector_btn_login"
+            android:text="@string/str_reset_pwd_email"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/pb_reset"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:visibility="gone"/>
+</LinearLayout>
