@@ -9,13 +9,38 @@ import android.content.Context;
 public class UserCache {
 
     private static final String USER_NAME = "user_name";
+    private static final String EMAIL = "email";
+    private static final String AVATOR = "avator";
     private static final String DEFAULT_NAME = "未登陆";
+    private static final String CONFIG_NAME = "user_cache";
 
     public static void setUserName(Context context, String userName) {
-        CacheUtils.setString(context, USER_NAME, userName);
+        CacheUtils.setString(context, USER_NAME, userName, CONFIG_NAME);
     }
 
     public static String getUserName(Context context) {
-        return CacheUtils.getString(context, USER_NAME, DEFAULT_NAME);
+        return CacheUtils.getString(context, USER_NAME, DEFAULT_NAME, CONFIG_NAME);
+    }
+
+    public static void setEmail(Context context, String email) {
+        CacheUtils.setString(context, EMAIL, email, CONFIG_NAME);
+    }
+
+    public static String getEmail(Context context) {
+        return CacheUtils.getString(context, EMAIL, null, CONFIG_NAME);
+    }
+
+    public static void setAvator(Context context, String avator) {
+        CacheUtils.setString(context, AVATOR, avator, CONFIG_NAME);
+    }
+
+    public static String getAvator(Context context) {
+        return CacheUtils.getString(context, AVATOR, null, CONFIG_NAME);
+    }
+
+    public static void cacheUserInfo(Context context, String userName, String email, String avator) {
+        setUserName(context, userName);
+        setEmail(context, email);
+        setAvator(context, avator);
     }
 }
