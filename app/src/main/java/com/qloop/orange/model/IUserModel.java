@@ -7,4 +7,8 @@ package com.qloop.orange.model;
 public interface IUserModel {
 
     void signUp(String userName, String email, String pwd, OnSignUpListener onSignUpListener);
+
+    void loginIn(String email, String pwd, OnLoginInListener onLoginInListener);
+
+    void applyUserInfo(String email, OnApplyUserInfoListener onApplyUserInfoListener);
 }

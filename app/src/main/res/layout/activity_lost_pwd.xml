@@ -5,6 +5,7 @@
               android:layout_height="match_parent"
               android:fitsSystemWindows="true"
               android:gravity="center_horizontal"
+              android:id="@+id/ll_reset_root_view"
               android:orientation="vertical">
 
     <com.qloop.orange.wight.TopBarView
@@ -28,7 +29,7 @@
             android:maxLines="1"/>
 
         <Button
-            android:id="@+id/btn_email_login"
+            android:id="@+id/btn_reset"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"

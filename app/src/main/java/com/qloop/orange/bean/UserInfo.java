@@ -8,11 +8,12 @@ public class UserInfo {
 
 
     /**
-     * result : 注册成功 (/注册失败/用户已存在)
+     * result : 注册成功 (/注册失败/用户已存在) || "success"/ "failed" getUserInfo
      * password :
      * mail : liutaizhu617@gmail.com
      * nickname : 测试菌
      * id : 2
+     * liveRoom
      * avatar : null
      */
 
@@ -20,8 +21,18 @@ public class UserInfo {
     private String password;
     private String mail;
     private String nickname;
+    private String liveRoom;
     private int id;
     private Object avatar;
+
+
+    public String getLiveRoom() {
+        return liveRoom;
+    }
+
+    public void setLiveRoom(String liveRoom) {
+        this.liveRoom = liveRoom;
+    }
 
     public String getResult() {
         return result;

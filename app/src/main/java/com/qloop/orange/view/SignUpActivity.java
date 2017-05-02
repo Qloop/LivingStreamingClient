@@ -1,7 +1,9 @@
 package com.qloop.orange.view;
 
+import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
@@ -53,9 +55,10 @@ public class SignUpActivity extends BaseActivity implements ISignUpView {
 
     @OnClick(R.id.btn_sign)
     public void signUpClick() {
+        hideKeybord();
         if (signUpPresenter != null && checkInput()) {
-            mSignUpProgress.setVisibility(View.VISIBLE);
             showProgress();
+            signUpPresenter.signUp();
         }
     }
 
@@ -85,8 +88,10 @@ public class SignUpActivity extends BaseActivity implements ISignUpView {
         if (USER_EXIST.equals(userInfo.getResult())) {
             userExits();
         } else {
-            UserCache.cacheUserInfo(this, userInfo.getNickname(), userInfo.getMail(), userInfo.getAvatar().toString());
-
+            UserCache.cacheUserInfo(this, userInfo.getNickname(), userInfo.getMail(),
+                    userInfo.getAvatar() == null ? "" : userInfo.getAvatar().toString(), null);
+            hideProgress();
+            showSuccessDialog();
         }
     }
 
@@ -143,4 +148,5 @@ public class SignUpActivity extends BaseActivity implements ISignUpView {
         });
         pDialog.show();
     }
+
 }

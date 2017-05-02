@@ -11,6 +11,7 @@ public class UserCache {
     private static final String USER_NAME = "user_name";
     private static final String EMAIL = "email";
     private static final String AVATOR = "avator";
+    private static final String LIVE_ROOM = "live_room";
     private static final String DEFAULT_NAME = "未登陆";
     private static final String CONFIG_NAME = "user_cache";
 
@@ -38,9 +39,18 @@ public class UserCache {
         return CacheUtils.getString(context, AVATOR, null, CONFIG_NAME);
     }
 
-    public static void cacheUserInfo(Context context, String userName, String email, String avator) {
+    public static void setLiveRoom(Context context, String liveRoom) {
+        CacheUtils.setString(context, LIVE_ROOM, liveRoom, CONFIG_NAME);
+    }
+
+    public static String getLiveRoom(Context context) {
+        return CacheUtils.getString(context, LIVE_ROOM, null, CONFIG_NAME);
+    }
+
+    public static void cacheUserInfo(Context context, String userName, String email, String avator, String liveRoom) {
         setUserName(context, userName);
         setEmail(context, email);
         setAvator(context, avator);
+        setLiveRoom(context,liveRoom);
     }
 }

@@ -1,6 +1,7 @@
 package com.qloop.orange.presenter;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.qloop.orange.bean.UserInfo;
 import com.qloop.orange.model.IUserModel;
