@@ -10,6 +10,7 @@ import android.view.KeyEvent;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.qloop.orange.MyApplication;
 import com.qloop.orange.R;
 import com.qloop.orange.view.Iview.IMainView;
 import com.qloop.orange.view.fragment.HomeFragment;
@@ -48,6 +49,7 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Override
     protected void initViews() {
+        MyApplication.addDestoryActivity(this,"MainActivity");
         setSelectedPager(0);
         Fragment homeFragment = new HomeFragment();
         Fragment rssFragment = new RssFragment();

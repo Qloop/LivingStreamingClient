@@ -51,6 +51,12 @@ public class UserCache {
         setUserName(context, userName);
         setEmail(context, email);
         setAvator(context, avator);
-        setLiveRoom(context,liveRoom);
+        setLiveRoom(context, liveRoom);
+    }
+
+
+    public static void cleanUserInfo(Context context) {
+        CacheUtils.cleanCache(context, new String[]{USER_NAME, EMAIL, AVATOR, LIVE_ROOM},
+                CONFIG_NAME);
     }
 }

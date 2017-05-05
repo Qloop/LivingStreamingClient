@@ -16,6 +16,7 @@ import com.qloop.orange.utils.SystemBarTintManager;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * BaseActivity
@@ -23,6 +24,8 @@ import butterknife.Unbinder;
 public abstract class BaseActivity extends AppCompatActivity {
 
     private Unbinder unbinder;
+    private SweetAlertDialog pDialog;
+    public static final String NET_ERROR = "网络错误,请检查网络后重试";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +91,21 @@ public abstract class BaseActivity extends AppCompatActivity {
     public void hideKeybord() {
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
+    }
+
+    public void showPromptDialog(String content) {
+        pDialog = new SweetAlertDialog(this)
+                .setTitleText("-.-")
+                .setContentText(content)
+                .setConfirmText("确定");
+
+        pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                pDialog.dismiss();
+            }
+        });
+        pDialog.show();
     }
 
     @Override

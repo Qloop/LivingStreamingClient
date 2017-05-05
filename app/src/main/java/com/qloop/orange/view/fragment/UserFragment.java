@@ -110,7 +110,8 @@ public class UserFragment extends BaseFragment implements IUserFragment {
 
     @OnClick(R.id.ptl_setting)
     public void settings() {
-        startActivity(new Intent(mActivity, SettingsActivity.class));
+        Intent intent = new Intent(mActivity, SettingsActivity.class);
+        startActivity(intent);
 //        mActivity.finish();
     }
 

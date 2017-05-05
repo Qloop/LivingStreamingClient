@@ -17,77 +17,92 @@ import com.qloop.orange.R;
  */
 public class TopBarView extends LinearLayout {
 
-	private static final String NAMESPACE = "http://schemas.android.com/apk/res-auto";
-	private ImageView ivBack;
-	private TextView tvTitle;
-	private TextView tvSubTitle;
-	private String mTitle;
-	private String mSubTitle;
-	private int topIcon;
+    private static final String NAMESPACE = "http://schemas.android.com/apk/res-auto";
+    private ImageView ivBack;
+    private TextView tvTitle;
+    private TextView tvSubTitle;
+    private String mTitle;
+    private String mSubTitle;
+    private int topIcon;
 
 
-	public TopBarView(Context context) {
-		super(context);
-		initViews();
-	}
+    public TopBarView(Context context) {
+        super(context);
+        initViews();
+    }
 
-	public TopBarView(Context context, AttributeSet attrs) {
-		super(context, attrs);
-		mTitle = attrs.getAttributeValue(NAMESPACE, "topTitle");// 根据属性名称,获取属性的值
-		mSubTitle = attrs.getAttributeValue(NAMESPACE, "topSubtitle");
-		topIcon = attrs.getAttributeResourceValue(NAMESPACE, "topIcon", R.mipmap.back);
-		initViews();
-	}
+    public TopBarView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        mTitle = attrs.getAttributeValue(NAMESPACE, "topTitle");// 根据属性名称,获取属性的值
+        mSubTitle = attrs.getAttributeValue(NAMESPACE, "topSubtitle");
+        topIcon = attrs.getAttributeResourceValue(NAMESPACE, "topIcon", R.mipmap.back);
+        initViews();
+    }
 
-	public TopBarView(Context context, AttributeSet attrs, int defStyleAttr) {
-		super(context, attrs, defStyleAttr);
-		initViews();
-	}
+    public TopBarView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        initViews();
+    }
 
-	private void initViews() {
-		// 将自定义好的布局文件设置给当前的TopBarView
-		View.inflate(getContext(), R.layout.top_bar, this);
-		tvTitle = (TextView) findViewById(R.id.tv_title);
-		tvSubTitle = (TextView) findViewById(R.id.tv_subtitle);
-		ivBack = (ImageView) findViewById(R.id.iv_back);
-		ivBack.setImageResource(topIcon);
-		ivBack.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				((Activity)getContext()).finish();
-			}
-		});
+    private void initViews() {
+        // 将自定义好的布局文件设置给当前的TopBarView
+        View.inflate(getContext(), R.layout.top_bar, this);
+        tvTitle = (TextView) findViewById(R.id.tv_title);
+        tvSubTitle = (TextView) findViewById(R.id.tv_subtitle);
+        ivBack = (ImageView) findViewById(R.id.iv_back);
+        ivBack.setImageResource(topIcon);
+        ivBack.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (onIconClickListener != null) {
+                    onIconClickListener.onIconClick();
+                } else {
+                    ((Activity) getContext()).finish();
+                }
+            }
+        });
 
-		tvSubTitle.setOnClickListener(new OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				mListener.onClickSubTitle();
-			}
-		});
+        tvSubTitle.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.onClickSubTitle();
+            }
+        });
 
-		setTitle(mTitle);
-		setSubTitle(mSubTitle);
-	}
+        setTitle(mTitle);
+        setSubTitle(mSubTitle);
+    }
 
-	OnSubTitleListener mListener;
-	public void setOnSubTitleListener(OnSubTitleListener subTitleListener){
-		mListener = subTitleListener;
-	}
+    OnIconClickListener onIconClickListener;
 
-	public interface OnSubTitleListener{
-		public void onClickSubTitle();
-	}
+    public void setOnIconClickListener(OnIconClickListener onIconClickListener) {
+        this.onIconClickListener = onIconClickListener;
+    }
 
-	private void setSubTitle(String subTitle) {
-		if (subTitle != null){
-			tvSubTitle.setText(subTitle);
-		}
-	}
+    public interface OnIconClickListener {
+        void onIconClick();
+    }
 
-	private void setTitle(String title) {
-		if(title != null){
-			tvTitle.setText(title);
-		}
-	}
+    OnSubTitleListener mListener;
+
+    public void setOnSubTitleListener(OnSubTitleListener subTitleListener) {
+        mListener = subTitleListener;
+    }
+
+    public interface OnSubTitleListener {
+        public void onClickSubTitle();
+    }
+
+    private void setSubTitle(String subTitle) {
+        if (subTitle != null) {
+            tvSubTitle.setText(subTitle);
+        }
+    }
+
+    private void setTitle(String title) {
+        if (title != null) {
+            tvTitle.setText(title);
+        }
+    }
 
 }

@@ -124,19 +124,19 @@ public class FeedbackActivity extends BaseActivity {
         pDialog.show();
     }
 
-    private void showPromptDialog(String content) {
-        pDialog = new SweetAlertDialog(this)
-                .setContentText(content)
-                .setConfirmText("确定");
-
-        pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-            @Override
-            public void onClick(SweetAlertDialog sweetAlertDialog) {
-                pDialog.dismiss();
-            }
-        });
-        pDialog.show();
-    }
+//    private void showPromptDialog(String content) {
+//        pDialog = new SweetAlertDialog(this)
+//                .setContentText(content)
+//                .setConfirmText("确定");
+//
+//        pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+//            @Override
+//            public void onClick(SweetAlertDialog sweetAlertDialog) {
+//                pDialog.dismiss();
+//            }
+//        });
+//        pDialog.show();
+//    }
 
     private boolean checkInput() {
         return !TextUtils.isEmpty(mFeedbackContent.getText().toString());

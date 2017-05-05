@@ -53,7 +53,7 @@ public class CacheUtils {
         }
     }
 
-    public void cleanCache(Context context, String[] keyList, @Nullable String configName) {
+    public static void cleanCache(Context context, String[] keyList, @Nullable String configName) {
         if (configName == null) {
             SharedPreferences sp = context.getSharedPreferences(CACHE_NAME, Context.MODE_PRIVATE);
             for (String key :
