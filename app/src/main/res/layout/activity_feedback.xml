@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:fitsSystemWindows="true"
+              android:orientation="vertical"
+              android:weightSum="6">
+
+    <com.qloop.orange.wight.TopBarView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:topTitle="意见反馈"/>
+
+    <EditText
+        android:id="@+id/et_feedback_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
+        android:layout_weight="3"
+        android:background="@drawable/shape_feedback_border"
+        android:gravity="start"
+        android:hint="@string/str_prompt_feedback"
+        android:padding="15dp"
+        android:textColor="@color/colorBlack"
+        android:textColorHint="@color/colorGray"
+        android:textSize="14sp"/>
+
+    <Button
+        android:id="@+id/btn_feedback"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:background="@drawable/selector_btn_submit"
+        android:text="@string/str_submit"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"/>
+</LinearLayout>

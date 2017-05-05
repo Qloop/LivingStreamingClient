@@ -102,4 +102,17 @@
     <string name="str_lost_pwd">忘记密码</string>
     <string name="prompt_nickname">nickname</string>
     <string name="str_reset_pwd_email">发送重置密码邮件</string>
+
+    <string name="str_copyright_content">来自一个出身Android \n
+        渴望脚踏Android / 后台两条船的程序猿的 \n
+        无聊毕设  \n
+        会开源 \n
+        现在还很粗糙\n
+        也不十分规范\n
+        也许以后还会维护\n
+        没事提个issues呗\n
+        留个star呗
+    </string>
+    <string name="str_prompt_feedback">用的不爽？ 尽管来吐槽~</string>
+    <string name="str_submit">提交</string>
 </resources>
