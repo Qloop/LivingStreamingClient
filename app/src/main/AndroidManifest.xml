@@ -64,6 +64,7 @@
             android:name=".view.CopyRightActivity"
             android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
         <activity android:name=".view.FeedbackActivity"/>
+        <activity android:name=".view.ProfileActivity"/>
     </application>
 
 </manifest>

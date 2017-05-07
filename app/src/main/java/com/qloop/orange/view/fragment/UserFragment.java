@@ -2,6 +2,7 @@ package com.qloop.orange.view.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.qloop.orange.utils.ToastUtils;
 import com.qloop.orange.utils.UserCache;
 import com.qloop.orange.view.Iview.IUserFragment;
 import com.qloop.orange.view.LoginActivity;
+import com.qloop.orange.view.ProfileActivity;
 import com.qloop.orange.view.SettingsActivity;
 import com.qloop.orange.wight.CircleImageView;
 import com.qloop.orange.wight.ProfileItemLayout;
@@ -85,7 +87,15 @@ public class UserFragment extends BaseFragment implements IUserFragment {
 
     @OnClick(R.id.civ_avatar)
     public void changeUserInfo() {
+        if (checkPermission()) {
+            startActivity(new Intent(mActivity, ProfileActivity.class));
+        } else {
+            showPromptDialog(DEFAULT_USER_NAME);
+        }
+    }
 
+    private boolean checkPermission() {
+        return !UserCache.getUserName(mActivity).equals(DEFAULT_USER_NAME);
     }
 
     @OnClick(R.id.ptl_apply_host)

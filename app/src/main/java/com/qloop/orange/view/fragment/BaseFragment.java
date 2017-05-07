@@ -9,9 +9,11 @@ import android.view.ViewGroup;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public abstract class BaseFragment extends Fragment {
 	public Activity mActivity;//依附的Activity
+	private SweetAlertDialog pDialog;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -41,5 +43,20 @@ public abstract class BaseFragment extends Fragment {
 
 	//子类必须实现布局初始化
 	public abstract View initViews();
+
+	public void showPromptDialog(String content) {
+		pDialog = new SweetAlertDialog(mActivity)
+				.setTitleText("-.-")
+				.setContentText(content)
+				.setConfirmText("确定");
+
+		pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+			@Override
+			public void onClick(SweetAlertDialog sweetAlertDialog) {
+				pDialog.dismiss();
+			}
+		});
+		pDialog.show();
+	}
 
 }

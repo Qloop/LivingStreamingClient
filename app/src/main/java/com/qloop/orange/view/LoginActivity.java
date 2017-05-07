@@ -13,6 +13,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.qloop.orange.MyApplication;
 import com.qloop.orange.R;
 import com.qloop.orange.bean.UserInfo;
 import com.qloop.orange.presenter.LoginInPresenter;
@@ -151,9 +152,10 @@ public class LoginActivity extends BaseActivity implements ILoginView {
 
     @Override
     public void toNextPager() {
+        MyApplication.destoryMap.get("MainActivity").finish();
+        startActivity(new Intent(this, MainActivity.class));
         finish();
     }
-
 
 
 }

@@ -116,4 +116,14 @@
     <string name="str_prompt_feedback">用的不爽？ 尽管来吐槽~</string>
     <string name="str_submit">提交</string>
     <string name="str_copyright_qloop">COPYRIGHT@Qloop漫步</string>
+    <string name="str_avator">头像</string>
+    <string name="str_change">更换</string>
+    <string name="str_unsign">未登录</string>
+    <string name="str_reset_nickname">修改</string>
+    <string name="str_nickname">昵称</string>
+    <string name="str_email">邮箱</string>
+    <string name="str_not_reset">不可修改</string>
+    <string name="str_take_phone">拍照</string>
+    <string name="str_take_album">从手机上获取</string>
+    <string name="str_cancel">取消</string>
 </resources>
