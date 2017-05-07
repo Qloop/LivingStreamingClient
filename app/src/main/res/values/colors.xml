@@ -9,6 +9,7 @@
     <color name="colorGray2">#C4C4C4</color>
     <color name="colorGray3">#F2F2F2</color>
     <color name="colorBlack">#3D3333</color>
+    <color name="colorLightBlack">#3B3B3B</color>
     <color name="colorBgPressed">#d9d9d9</color>
     <color name="colorRed">#f84d2b</color>
     <color name="colorSubPrimary">#1CB39B</color>

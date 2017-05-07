@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
+              android:layout_width="280dp"
+              android:layout_height="190dp"
               android:background="@drawable/shape_popwindow"
               android:orientation="vertical">
 
@@ -10,21 +10,30 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="2"
-        android:background="@color/colorWhite"
         android:gravity="center"
         android:text="@string/str_take_phone"
+        android:textColor="@color/colorLightBlack"
         android:textSize="16sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorGray"/>
 
     <TextView
         android:id="@+id/tv_album"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginTop="1dp"
         android:layout_weight="2"
-        android:background="@color/colorWhite"
         android:gravity="center"
         android:text="@string/str_take_album"
+        android:textColor="@color/colorLightBlack"
         android:textSize="16sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPrimary"/>
 
     <TextView
         android:id="@+id/tv_cancel"
@@ -32,8 +41,9 @@
         android:layout_height="0dp"
         android:layout_marginTop="3dp"
         android:layout_weight="1"
-        android:background="@color/colorWhite"
         android:gravity="center"
         android:text="@string/str_cancel"
+        android:textColor="@color/colorLightBlack"
         android:textSize="16sp"/>
 </LinearLayout>
+

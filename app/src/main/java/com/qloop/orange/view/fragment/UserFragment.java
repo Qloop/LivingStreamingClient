@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.qloop.orange.R;
 import com.qloop.orange.utils.ToastUtils;
 import com.qloop.orange.utils.UserCache;
@@ -70,6 +71,13 @@ public class UserFragment extends BaseFragment implements IUserFragment {
             tvUserName.setText(userName);
         }
         //头像
+        if (!TextUtils.isEmpty(UserCache.getAvator(mActivity))) {
+            Glide.with(mActivity)
+                    .load(UserCache.getAvator(mActivity))
+                    .centerCrop()
+                    .placeholder(R.mipmap.ic_avatar_default)
+                    .into(civAvatar);
+        }
 
     }
 

@@ -1,5 +1,7 @@
 package com.qloop.orange.netInterface;
 
+import com.qloop.orange.bean.UserInfo;
+
 import okhttp3.ResponseBody;
 import retrofit2.Response;
 import retrofit2.http.GET;
@@ -18,5 +20,5 @@ public interface AvatarNetInterface {
                                                      @Query("avatar") String avatar);
 
     @GET("get_avatar")
-    Observable<Response<ResponseBody>> getAvatar(@Query("mail") String mail);
+    Observable<UserInfo> getAvatar(@Query("mail") String mail);
 }
