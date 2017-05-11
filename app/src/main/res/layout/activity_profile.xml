@@ -29,13 +29,11 @@
             android:padding="5dp"
             android:text="@string/str_avator"/>
 
-        <com.qloop.orange.wight.CircleImageView
+        <ImageView
             android:id="@+id/civ_avator"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_toEndOf="@+id/tv_avator"
-            android:src="@mipmap/ic_avatar_default"
-            app:borderWith="0dp"/>
+            android:layout_toEndOf="@+id/tv_avator"/>
 
         <TextView
             android:layout_width="wrap_content"

@@ -83,4 +83,7 @@ dependencies {
 
     /*RxPermission*/
 //    compile 'com.tbruyelle.rxpermissions:rxpermissions:0.9.4@aar'
+
+    /*3D云标签*/
+    compile 'com.moxun:tagcloudlib:1.2.0'
 }

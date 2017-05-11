@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:fitsSystemWindows="true"
+              android:orientation="vertical">
+
+    <com.qloop.orange.wight.TopBarView
+        android:id="@+id/top_create_room"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:topTitle="创建直播间"/>
+
+    <com.qloop.orange.wight.NoScrollViewPager
+        android:id="@+id/vp_create_route"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
+
+
+

@@ -51,35 +51,35 @@ public class CreateRoomActivity extends Activity {
             ToastUtils.showToastLong(this, "请输入直播间名字");
             return;
         }
-        OkHttpClient.Builder builder = new OkHttpClient.Builder();
-        builder.connectTimeout(5000, TimeUnit.SECONDS);
-        Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(AppConfig.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .build();
-        ApplyPushUrlInterface applyPushUrlInterface = retrofit.create(ApplyPushUrlInterface.class);
-        applyPushUrlInterface.getApplyPushInfo(mHomeName.getText().toString())
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<ApplyPushInfo>() {
-                    @Override
-                    public void onCompleted() {
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onNext(ApplyPushInfo applyPushInfo) {
-                        ToastUtils.showToastLong(CreateRoomActivity.this, applyPushInfo.getRtmp());
-                        Intent intent = new Intent(CreateRoomActivity.this, PushActivity.class);
-                        intent.putExtra("rtmp", applyPushInfo.getRtmp());
-                        startActivity(intent);
-                    }
-                });
+//        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+//        builder.connectTimeout(5000, TimeUnit.SECONDS);
+//        Retrofit retrofit = new Retrofit.Builder()
+//                .baseUrl(AppConfig.BASE_URL)
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+//                .build();
+//        ApplyPushUrlInterface applyPushUrlInterface = retrofit.create(ApplyPushUrlInterface.class);
+//        applyPushUrlInterface.getApplyPushInfo(mHomeName.getText().toString())
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Subscriber<ApplyPushInfo>() {
+//                    @Override
+//                    public void onCompleted() {
+//
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable e) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onNext(ApplyPushInfo applyPushInfo) {
+//                        ToastUtils.showToastLong(CreateRoomActivity.this, applyPushInfo.getRtmp());
+//                        Intent intent = new Intent(CreateRoomActivity.this, PushActivity.class);
+//                        intent.putExtra("rtmp", applyPushInfo.getRtmp());
+//                        startActivity(intent);
+//                    }
+//                });
     }
 }

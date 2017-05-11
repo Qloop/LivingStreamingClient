@@ -83,23 +83,25 @@ public class ResetPwdActivity extends BaseActivity {
                     @Override
                     public void onError(Throwable e) {
                         e.printStackTrace();
-                        Snackbar snackbar = Snackbar.make(rootView, RESET_FAILED, Snackbar.LENGTH_SHORT);
-                        SnackBarUtils.setSnackbarColor(snackbar, R.color.colorWhite, R.color.colorPrimary);
-                        snackbar.show();
+//                        Snackbar snackbar = Snackbar.make(rootView, RESET_FAILED, Snackbar.LENGTH_SHORT);
+//                        SnackBarUtils.setSnackbarColor(snackbar, R.color.colorWhite, R.color.colorPrimary);
+//                        snackbar.show();
+                        SnackBarUtils.makeShort(rootView, RESET_FAILED).danger();
                     }
 
                     @Override
                     public void onNext(Boolean aBoolean) {
                         ToastUtils.showToastShort(ResetPwdActivity.this,RESET_SUCCESS);
-                        Snackbar snackbar = Snackbar.make(rootView, RESET_SUCCESS, Snackbar.LENGTH_LONG);
-                        SnackBarUtils.setSnackbarColor(snackbar, R.color.colorWhite, R.color.colorPrimary);
-//                        snackbar.setAction("知道啦~~", new View.OnClickListener() {
-//                            @Override
-//                            public void onClick(View v) {
-//                                finish();
-//                            }
-//                        });
-                        snackbar.show();
+//                        Snackbar snackbar = Snackbar.make(rootView, RESET_SUCCESS, Snackbar.LENGTH_LONG);
+//                        SnackBarUtils.setSnackbarColor(snackbar, R.color.colorWhite, R.color.colorPrimary);
+////                        snackbar.setAction("知道啦~~", new View.OnClickListener() {
+////                            @Override
+////                            public void onClick(View v) {
+////                                finish();
+////                            }
+////                        });
+//                        snackbar.show();
+                        SnackBarUtils.makeLong(rootView, RESET_SUCCESS).success();
                         finish();
                     }
                 });

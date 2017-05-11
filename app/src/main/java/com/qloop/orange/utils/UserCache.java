@@ -12,6 +12,7 @@ public class UserCache {
     private static final String EMAIL = "email";
     private static final String AVATOR = "avator";
     private static final String LIVE_ROOM = "live_room";
+    private static final String LIVE_ROOM_NAME = "live_room_name";
     private static final String DEFAULT_NAME = "未登陆";
     private static final String CONFIG_NAME = "user_cache";
 
@@ -21,6 +22,14 @@ public class UserCache {
 
     public static String getUserName(Context context) {
         return CacheUtils.getString(context, USER_NAME, DEFAULT_NAME, CONFIG_NAME);
+    }
+
+    public static void setRoomName(Context context, String roomName) {
+        CacheUtils.setString(context, LIVE_ROOM_NAME, roomName, CONFIG_NAME);
+    }
+
+    public static String getRoomName(Context context) {
+        return CacheUtils.getString(context, LIVE_ROOM_NAME, null, CONFIG_NAME);
     }
 
     public static void setEmail(Context context, String email) {
@@ -52,11 +61,12 @@ public class UserCache {
         setEmail(context, email);
         setAvator(context, avator);
         setLiveRoom(context, liveRoom);
+//        setRoomName(context, roomName);
     }
 
 
     public static void cleanUserInfo(Context context) {
-        CacheUtils.cleanCache(context, new String[]{USER_NAME, EMAIL, AVATOR, LIVE_ROOM},
+        CacheUtils.cleanCache(context, new String[]{USER_NAME, EMAIL, AVATOR, LIVE_ROOM, LIVE_ROOM_NAME},
                 CONFIG_NAME);
     }
 }

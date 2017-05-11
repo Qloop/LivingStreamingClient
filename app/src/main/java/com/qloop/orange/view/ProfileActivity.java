@@ -1,6 +1,8 @@
 package com.qloop.orange.view;
 
 import android.content.Intent;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -9,14 +11,12 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.qloop.orange.R;
-import com.qloop.orange.adapter.AllLiveAdapter;
 import com.qloop.orange.utils.UserCache;
 import com.qloop.orange.view.Iview.IProfileView;
-import com.qloop.orange.wight.CircleImageView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
  * Created by Qloop on 2017/5/6.
@@ -28,7 +28,7 @@ public class ProfileActivity extends BaseActivity implements IProfileView {
     @BindView(R.id.tv_avator)
     TextView tvAvator;
     @BindView(R.id.civ_avator)
-    CircleImageView civAvator;
+    ImageView civAvatar;
     @BindView(R.id.iv_right)
     ImageView ivRight;
     @BindView(R.id.rl_change_avator)
@@ -47,11 +47,15 @@ public class ProfileActivity extends BaseActivity implements IProfileView {
     @Override
     protected void initViews() {
         tvName.setText(UserCache.getUserName(this));
-        Glide.with(this)
-                .load(UserCache.getAvator(this))
-                .centerCrop()
-                .placeholder(R.mipmap.ic_avatar_default)
-                .into(civAvator);
+        if (!TextUtils.isEmpty(UserCache.getAvator(this))) {
+            Glide.with(this)
+                    .load(UserCache.getAvator(this))
+                    .bitmapTransform(new CropCircleTransformation(this))
+                    .crossFade(1000)
+                    .into(civAvatar);
+        } else {
+            civAvatar.setImageResource(R.mipmap.ic_avatar_default);
+        }
     }
 
     @Override
@@ -73,8 +77,19 @@ public class ProfileActivity extends BaseActivity implements IProfileView {
 
     @Override
     public void showPopWindow() {
-        startActivity(new Intent(this, ChangeAvatarActivity.class));
-//        finish();
+//        startActivity(new Intent(this, ChangeAvatarActivity.class));
+        startActivityForResult(new Intent(this, ChangeAvatarActivity.class), 1);
+        finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        Log.i("AVATAR", "result");
+        Glide.with(this)
+                .load(UserCache.getAvator(this))
+                .centerCrop()
+                .placeholder(R.mipmap.ic_avatar_default)
+                .into(civAvatar);
     }
 
     @Override

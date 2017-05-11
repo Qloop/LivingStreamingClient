@@ -51,8 +51,11 @@
         <activity
             android:name=".view.PushActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:label="@string/app_name"/>
+        <activity
+            android:name=".view.PushHorizentalActivity"
+            android:configChanges="keyboardHidden|orientation">
         </activity>
         <activity android:name=".view.CreateRoomActivity"/>
         <activity android:name=".view.PullActivity"/>
@@ -68,6 +71,11 @@
         <activity
             android:name=".view.ChangeAvatarActivity"
             android:theme="@style/MyDialogActivityStyle"/>
+        <activity android:name=".view.CreateLiveRoomActivity"/>
+        <activity android:name=".view.LiveActivity"/>
+        <activity
+            android:name=".view.HostActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

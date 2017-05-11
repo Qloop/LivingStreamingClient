@@ -82,7 +82,7 @@ public class LoginActivity extends BaseActivity implements ILoginView {
             showProgress();
             loginInPresenter.login();
         } else {
-            showSnackBar(INPUT_PROMOT);
+            SnackBarUtils.makeLong(rootView, INPUT_PROMOT).info();
         }
     }
 
@@ -92,15 +92,15 @@ public class LoginActivity extends BaseActivity implements ILoginView {
         finish();
     }
 
-    private void showSnackBar(String msg) {
-        Snackbar snackbar = Snackbar.make(rootView, msg, Snackbar.LENGTH_SHORT);
-        SnackBarUtils.setSnackbarColor(snackbar, R.color.colorWhite, R.color.colorPrimary);
-        snackbar.show();
-    }
+//    private void showSnackBar(String msg) {
+//        Snackbar snackbar = Snackbar.make(rootView, msg, Snackbar.LENGTH_SHORT);
+//        SnackBarUtils.setSnackbarColor(snackbar, R.color.colorWhite, R.color.colorPrimary);
+//        snackbar.show();
+//    }
 
     @Override
     public void error() {
-        showSnackBar(LOGIN_ERROR);
+        SnackBarUtils.makeLong(rootView, LOGIN_ERROR).danger();
     }
 
     @Override
@@ -147,7 +147,7 @@ public class LoginActivity extends BaseActivity implements ILoginView {
 
     @Override
     public void loginFailed() {
-        showSnackBar(LOGIN_FAILED);
+        SnackBarUtils.makeLong(rootView, LOGIN_FAILED).danger();
     }
 
     @Override

@@ -49,7 +49,7 @@ public class MainActivity extends BaseActivity implements IMainView {
 
     @Override
     protected void initViews() {
-        MyApplication.addDestoryActivity(this,"MainActivity");
+        MyApplication.addDestoryActivity(this, "MainActivity");
         setSelectedPager(0);
         Fragment homeFragment = new HomeFragment();
         Fragment rssFragment = new RssFragment();
@@ -70,6 +70,7 @@ public class MainActivity extends BaseActivity implements IMainView {
             }
         };
         vpMain.setAdapter(fragmentPagerAdapter);
+        vpMain.setOffscreenPageLimit(2);
         vpMain.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

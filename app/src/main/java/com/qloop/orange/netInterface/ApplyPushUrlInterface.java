@@ -14,5 +14,10 @@ import rx.Observable;
 public interface ApplyPushUrlInterface {
 
     @GET("living/apply_push_url")
-    Observable<ApplyPushInfo> getApplyPushInfo(@Query("description") String description);
+    Observable<ApplyPushInfo> getApplyPushInfo(@Query("description") String description,
+                                               @Query("mail") String mail,
+                                               @Query("nickname") String nickname,
+                                               @Query("title") String title,
+                                               @Query("classify") String classify);
+
 }

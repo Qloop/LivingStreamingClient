@@ -7,13 +7,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.qloop.orange.R;
 import com.qloop.orange.utils.ToastUtils;
 import com.qloop.orange.utils.UserCache;
+import com.qloop.orange.view.CreateLiveRoomActivity;
+import com.qloop.orange.view.HostActivity;
 import com.qloop.orange.view.Iview.IUserFragment;
+import com.qloop.orange.view.LiveActivity;
 import com.qloop.orange.view.LoginActivity;
 import com.qloop.orange.view.ProfileActivity;
 import com.qloop.orange.view.SettingsActivity;
@@ -24,6 +28,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
+import cn.pedant.SweetAlert.SweetAlertDialog;
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
  * Created by Qloop on 2017/4/13.
@@ -31,7 +37,7 @@ import butterknife.Unbinder;
 
 public class UserFragment extends BaseFragment implements IUserFragment {
     @BindView(R.id.civ_avatar)
-    CircleImageView civAvatar;
+    ImageView civAvatar;
     @BindView(R.id.ptl_apply_host)
     ProfileItemLayout ptlApplyHost;
     @BindView(R.id.ptl_rss)
@@ -72,11 +78,13 @@ public class UserFragment extends BaseFragment implements IUserFragment {
         }
         //头像
         if (!TextUtils.isEmpty(UserCache.getAvator(mActivity))) {
-            Glide.with(mActivity)
+            Glide.with(this)
                     .load(UserCache.getAvator(mActivity))
-                    .centerCrop()
-                    .placeholder(R.mipmap.ic_avatar_default)
+                    .bitmapTransform(new CropCircleTransformation(mActivity))
+                    .crossFade(1000)
                     .into(civAvatar);
+        } else {
+            civAvatar.setImageResource(R.mipmap.ic_avatar_default);
         }
 
     }
@@ -108,8 +116,44 @@ public class UserFragment extends BaseFragment implements IUserFragment {
 
     @OnClick(R.id.ptl_apply_host)
     public void applyHost() {
-
+        if (TextUtils.isEmpty(UserCache.getEmail(mActivity))) {
+            showPromptDialog("请先登陆");
+        }
+        if (TextUtils.isEmpty(UserCache.getLiveRoom(mActivity))) {//还没有直播间
+            showHostPromptDialog("还没有直播间 \n 创建直播间吗?", false);
+        } else {
+//            showHostPromptDialog("还没有直播间 \n 创建直播间吗?", true);
+            startActivity(new Intent(mActivity, HostActivity.class));
+        }
     }
+
+    private void showHostPromptDialog(String content, final boolean hasLiveRoom) {
+        final SweetAlertDialog pDialog = new SweetAlertDialog(mActivity)
+                .setTitleText("0、0")
+                .setContentText(content)
+                .setConfirmText("好哒")
+                .setCancelText("再想想");
+
+        pDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                pDialog.dismiss();
+                if (hasLiveRoom) {
+                    startActivity(new Intent(mActivity, LiveActivity.class));
+                } else {
+                    startActivity(new Intent(mActivity, CreateLiveRoomActivity.class));
+                }
+            }
+        });
+        pDialog.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                pDialog.dismiss();
+            }
+        });
+        pDialog.show();
+    }
+
 
     @OnClick(R.id.ptl_rss)
     public void rss() {

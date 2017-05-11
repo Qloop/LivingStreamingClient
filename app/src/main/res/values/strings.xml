@@ -126,4 +126,12 @@
     <string name="str_take_phone">拍照</string>
     <string name="str_take_album">从手机上获取</string>
     <string name="str_cancel">取消</string>
+    <string name="str_classify">选择直播分类</string>
+    <string name="str_next">下一步</string>
+    <string name="str_create_live_room">创建直播间</string>
+    <string name="str_live_room_name">直播间名称</string>
+    <string name="str_live_room_details">请写一下直播间详情</string>
+    <string name="str_horizental">横屏模式</string>
+    <string name="str_start_live">开始直播</string>
+    <string name="str_vertical">竖屏模式</string>
 </resources>
