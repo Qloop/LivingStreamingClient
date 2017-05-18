@@ -65,7 +65,6 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     }
 
     public RecommendAdapter(Context mContext, List<?> mContentData, List<?> mHeaderData, IRecommendFragment recommendFragment) {
-        System.out.println("&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&");
         this.mContext = mContext;
         this.mContentData = mContentData;
         this.mHeaderData = mHeaderData;
@@ -116,19 +115,11 @@ public class RecommendAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         TextView tvLiveRoomName;
         @BindView(R.id.tv_watch_count)
         TextView tvWatchCount;
-//        TextView tvLiveRoomName;
-//        TextView tvLiveName;
-//        ImageView ivThumbnail;
-//        TextView tvWatchCount;
 
         public RecommendViewHolder(View itemView) {
             super(itemView);
             itemRootView = (RelativeLayout) itemView;
             ButterKnife.bind(this, itemView);
-//            ivThumbnail = (ImageView) itemView.findViewById(R.id.iv_thumbnail);
-//            tvLiveName = (TextView) itemView.findViewById(R.id.tv_live_name);
-//            tvLiveRoomName = (TextView) itemView.findViewById(R.id.tv_live_room_name);
-//            tvWatchCount = (TextView) itemView.findViewById(R.id.tv_watch_count);
             itemRootView.setOnClickListener(this);
         }
 

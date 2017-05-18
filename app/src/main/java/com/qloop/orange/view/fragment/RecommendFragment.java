@@ -2,24 +2,20 @@ package com.qloop.orange.view.fragment;
 
 import android.content.Intent;
 import android.os.Handler;
-import android.os.Message;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 import com.qloop.orange.R;
 import com.qloop.orange.adapter.RecommendAdapter;
-import com.qloop.orange.adapter.TopViewPagerAdapter;
 import com.qloop.orange.bean.LiveListInfo;
 import com.qloop.orange.bean.TopRecommendInfo;
 import com.qloop.orange.presenter.RecommendPresenter;
 import com.qloop.orange.utils.ToastUtils;
 import com.qloop.orange.view.Iview.IRecommendFragment;
-import com.qloop.orange.view.PullActivity;
+import com.qloop.orange.view.VideoActivity;
 import com.qloop.orange.wight.TopViewPager;
 
 import butterknife.BindView;
@@ -99,7 +95,6 @@ public class RecommendFragment extends BaseFragment implements IRecommendFragmen
             @Override
             public void onItemClick(View view, int position) {
                 toLiveRoom();
-                ToastUtils.showToastShort(mActivity, position + "");
             }
 
             @Override
@@ -113,7 +108,6 @@ public class RecommendFragment extends BaseFragment implements IRecommendFragmen
             @Override
             public void onItemClick(View view, int position) {
                 toLiveRoom();
-                ToastUtils.showToastShort(mActivity, position + "");
             }
 
             @Override
@@ -125,7 +119,7 @@ public class RecommendFragment extends BaseFragment implements IRecommendFragmen
 
     @Override
     public void toLiveRoom() {
-        startActivity(new Intent(mActivity, PullActivity.class));
+        startActivity(new Intent(mActivity, VideoActivity.class));
     }
 
     @Override

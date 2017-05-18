@@ -34,6 +34,24 @@ public class LiveListInfo {
         private String liveRoomName;
         private String watchCount;
         private String livName;
+        private String pullUrl;
+        private String mail;
+
+        public void setPullUrl(String pullUrl) {
+            this.pullUrl = pullUrl;
+        }
+
+        public void setMail(String mail) {
+            this.mail = mail;
+        }
+
+        public String getPullUrl() {
+            return pullUrl;
+        }
+
+        public String getMail() {
+            return mail;
+        }
 
         public String getImg() {
             return img;

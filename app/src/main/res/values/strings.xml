@@ -134,4 +134,5 @@
     <string name="str_horizental">横屏模式</string>
     <string name="str_start_live">开始直播</string>
     <string name="str_vertical">竖屏模式</string>
+    <string name="str_live_info">直播详情</string>
 </resources>

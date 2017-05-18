@@ -14,7 +14,7 @@ import com.qloop.orange.bean.LiveListInfo;
 import com.qloop.orange.presenter.AllLivePresenter;
 import com.qloop.orange.utils.ToastUtils;
 import com.qloop.orange.view.Iview.IAllLiveFragmemt;
-import com.qloop.orange.view.PullActivity;
+import com.qloop.orange.view.VideoActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -69,14 +69,14 @@ public class AllLiveFragment extends BaseFragment implements IAllLiveFragmemt {
             @Override
             public void onItemClick(View view, int position) {
                 toLiveRoom();
-                ToastUtils.showToastShort(mActivity, position + "");
             }
         });
     }
 
     @Override
     public void toLiveRoom() {
-        startActivity(new Intent(mActivity, PullActivity.class));
+//        startActivity(new Intent(mActivity, PullActivity.class));
+        startActivity(new Intent(mActivity, VideoActivity.class));
     }
 
     @Override

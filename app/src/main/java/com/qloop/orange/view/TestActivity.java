@@ -26,7 +26,7 @@ public class TestActivity extends Activity {
 
     @OnClick(R.id.btn_pull)
     public void enterPull() {
-        startActivity(new Intent(this, PullActivity.class));
+        startActivity(new Intent(this, VideoActivity.class));
     }
 
     @OnClick(R.id.btn_push)

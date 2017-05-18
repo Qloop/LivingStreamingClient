@@ -20,6 +20,7 @@
     <!-- 系统不会进入休眠 -->
     <uses-permission android:name="android.permission.WAKE_LOCK"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION"/>
@@ -51,14 +52,13 @@
         <activity
             android:name=".view.PushActivity"
             android:configChanges="keyboardHidden|orientation"
-            android:screenOrientation="portrait"
-            android:label="@string/app_name"/>
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".view.PushHorizentalActivity"
             android:configChanges="keyboardHidden|orientation">
         </activity>
         <activity android:name=".view.CreateRoomActivity"/>
-        <activity android:name=".view.PullActivity"/>
         <activity android:name=".view.SettingsActivity"/>
         <activity android:name=".view.LoginActivity"/>
         <activity android:name=".view.SignUpActivity"/>
@@ -75,6 +75,10 @@
         <activity android:name=".view.LiveActivity"/>
         <activity
             android:name=".view.HostActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".view.VideoActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
             android:screenOrientation="portrait"/>
     </application>
 
